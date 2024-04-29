@@ -27,7 +27,7 @@ npm run gen pages home-page
 widget:
 
 ```shell
-npm run gen pages home-page
+npm run gen widgets home-page
 ```
 
 feature (form):
