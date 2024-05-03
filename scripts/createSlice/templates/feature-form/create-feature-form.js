@@ -3,7 +3,6 @@ const resolveRoot = require("../../resolveRoot");
 const createFeatureFormModel = require("./create-model");
 const createFeatureFormUI = require("./create-ui");
 const createFeatureFormIndexTemplate = require("./index-template");
-const firstCharUpperCase = require("../../firstCharUpperCase");
 
 module.exports = async (sliceName) => {
   try {
@@ -11,13 +10,11 @@ module.exports = async (sliceName) => {
   } catch (e) {
     console.log(`Couldn't find directory for ${sliceName}`);
   }
-  const [firstPart, ...restParts] = sliceName.split("-");
-  const parsedSliceName = [firstPart, ...restParts.map(firstCharUpperCase)].join("");
 
-  await createFeatureFormModel(parsedSliceName);
-  await createFeatureFormUI(parsedSliceName);
+  await createFeatureFormModel(sliceName);
+  await createFeatureFormUI(sliceName);
   await fs.writeFile(
-    resolveRoot("src", "features", parsedSliceName, "index.ts"),
-    createFeatureFormIndexTemplate(parsedSliceName)
+    resolveRoot("src", "features", sliceName, "index.ts"),
+    createFeatureFormIndexTemplate(sliceName)
   );
 };

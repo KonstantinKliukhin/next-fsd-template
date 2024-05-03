@@ -1,6 +1,7 @@
 const firstCharUpperCase = require("../../firstCharUpperCase");
+const toCamelCase = require("../../to-camel-case");
 
-module.exports = (slice) => `
+module.exports = (slice, component) => `
 "use client"
 import { zodResolver } from "@hookform/resolvers/zod";
 import { memo, useCallback } from "react"
@@ -10,17 +11,18 @@ import {
   Form,
   GeneralFormMessage,
 } from "@/shared/ui/form";
-import { ${slice}Schema } from "../../model/form-schema"
+import { ${toCamelCase(slice)}Schema } from "../../model/form-schema"
+import { ${component}Type } from "../../model/types"
 
-type ${firstCharUpperCase(slice)}FormProps = {
+type ${component}Props = {
 
 }
 
-export const ${firstCharUpperCase(slice)}Form = memo<${firstCharUpperCase(slice)}FormProps>(function ${firstCharUpperCase(slice)}Form(props) {
+export const ${component} = memo<${component}Props>(function ${component}(props) {
   const {} = props;
 
-  const form = useForm({
-    resolver: zodResolver(${slice}Schema)
+  const form = useForm<${component}Type>({
+    resolver: zodResolver(${toCamelCase(slice)}Schema)
   })
   
   const onSubmit = useCallback(() => {
