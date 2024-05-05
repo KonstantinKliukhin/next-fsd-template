@@ -41,3 +41,53 @@ entity:
 ```shell
 npm run gen entities country
 ```
+
+# Architecture notes:
+## Entities
+
+### Structure
+
+- **api**: Contains files related to handling API requests.
+    - `services.ts`: Houses API request functions.
+    - `query-hooks`: Includes hooks that wrap API requests from `services.ts` using React Query.
+    - `types`: Stores Data Transfer Object (DTO) types and other types related to API interactions.
+
+- **model**: Defines the types and data structures for each entity.
+    - `types.ts`: Houses types related to the entity. Additional files can be added if there are numerous types.
+    - *Optional*: Additional files for hooks or other business logic related to the entity.
+
+- **ui**: Contains components related to the entity.
+
+- **lib**: Contains utility functions for entity e.g. function getUserFullName.
+
+### Example Entity: User
+
+- **api**
+    - `services.ts`
+    - `query-hooks`
+    - `types`
+    - - `get-current-user.dto.ts`
+
+- **model**
+    - `types.ts`
+    - *Additional files*
+
+- **ui**
+    - `UserCard.ts`
+
+## Features
+
+Features represent specific business functionalities within the application.
+
+### Example Feature: Edit User Settings
+
+## Widgets
+
+Widgets are reusable components that compose features, entities, and shared components.
+
+### Example Widget: User Profile Widget
+
+## Pages
+
+Pages represent the different views of the application.
+Can be used for business logic but make sure it contains logic which will be used only for this page. More preferable to keep pages clean and write business logic in entities, feature or widgets depends on your case
