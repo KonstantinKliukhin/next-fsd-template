@@ -9,6 +9,8 @@ type LogoutButtonProps = ComponentProps<typeof Button>;
 
 export const LogoutButton = memo<LogoutButtonProps>(function LogoutButton(props) {
   const { mutate: logOut } = useLogout();
+
   const onLogout = useCallback(() => logOut(), [logOut]);
+
   return <Button onClick={onLogout} {...props} />;
 });

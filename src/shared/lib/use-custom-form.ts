@@ -2,6 +2,8 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
+// for initializing forms that needs to wait for initial data
+// very handy in conjunction with tanstack query
 export const useCustomForm = ((...args) => {
   const defaultValues = args?.[0]?.defaultValues;
   const form = useForm(...args);

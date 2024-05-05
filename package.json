@@ -11,7 +11,7 @@
     "lint:types": "tsc",
     "prepare": "husky install",
     "start": "next start",
-    "gen":  "node scripts/createSlice/index.js",
+    "gen": "node scripts/createSlice/index.js",
     "postinstall": "node scripts/clear-cache.js"
   },
   "browserslist": [
@@ -52,7 +52,7 @@
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.1.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-next-fsd": "^0.0.3",
+    "eslint-plugin-next-fsd": "^0.0.5",
     "eslint-plugin-simple-import-sort": "^12.0.0",
     "eslint-plugin-tailwindcss": "^3.14.1",
     "eslint-plugin-unused-imports": "^2.0.0",

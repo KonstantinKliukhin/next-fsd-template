@@ -30,7 +30,7 @@
       "error",
       {
         "alias": "@",
-        "ignorePatterns": ["**/src/shared/*.(ts|tsx)", "**/middleware.ts"]
+        "ignorePatterns": ["**/src/shared/config/*.(ts|tsx)", "**/src/shared/api/*.(ts|tsx)","**/middleware.ts"]
       }
     ]
   },

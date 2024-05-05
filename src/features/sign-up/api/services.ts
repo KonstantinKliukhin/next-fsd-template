@@ -14,7 +14,5 @@ export async function signUp(
     body: JSON.stringify({ email, password }),
   });
 
-  console.log("response: ", response);
-
   return (await response.json()) as ApiResponse<SessionUser>;
 }
