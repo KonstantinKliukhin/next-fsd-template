@@ -22,7 +22,7 @@ import { Input } from "@/shared/ui/input";
 
 import { useSendForgotPasswordEmail } from "../../api/query-hooks";
 import { forgotPasswordSchema } from "../../model/form-schema";
-import { ForgotPasswordFormType } from "../../model/types";
+import type { ForgotPasswordFormType } from "../../model/types";
 
 export const ForgotPasswordForm: FC = () => {
   const form = useForm<ForgotPasswordFormType>({

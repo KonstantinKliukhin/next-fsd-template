@@ -1,5 +1,5 @@
-import { z } from "zod";
+import type { z } from "zod";
 
-import { forgotPasswordSchema } from "./form-schema";
+import type { forgotPasswordSchema } from "./form-schema";
 
 export type ForgotPasswordFormType = z.infer<typeof forgotPasswordSchema>;

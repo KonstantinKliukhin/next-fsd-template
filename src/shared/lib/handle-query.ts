@@ -1,4 +1,4 @@
-import { ApiResponse } from "../types/api.types";
+import type { ApiResponse } from "../types/api.types";
 
 // used for throwing error in query hooks
 export function handleQuery<

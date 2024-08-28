@@ -1,8 +1,8 @@
-import { SessionUser } from "@/entities/user";
+import type { SessionUser } from "@/entities/user";
 import { apiRoutes } from "@/shared/config/api-routes";
-import { ApiResponse } from "@/shared/types/api.types";
+import type { ApiResponse } from "@/shared/types/api.types";
 
-import { SignInDto } from "./types/sign-in.dto";
+import type { SignInDto } from "./types/sign-in.dto";
 
 export async function logIn(dto: SignInDto): Promise<ApiResponse<SessionUser>> {
   const response = await fetch(apiRoutes.signIn, {

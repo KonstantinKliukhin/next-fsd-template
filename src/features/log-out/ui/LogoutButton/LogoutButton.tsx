@@ -1,5 +1,6 @@
 "use client";
-import { ComponentProps, memo, useCallback } from "react";
+import type { ComponentProps} from "react";
+import { memo, useCallback } from "react";
 
 import { Button } from "@/shared/ui/button";
 

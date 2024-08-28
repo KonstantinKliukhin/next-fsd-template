@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { FC } from "react";
+import type { FC } from "react";
 
 import { ResetPasswordForm } from "@/features/reset-password";
 import { appRoutes } from "@/shared/config/app-routes";

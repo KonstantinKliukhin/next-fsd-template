@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
 
-import { ApiError } from "@/shared/types/api.types";
+import type { ApiError } from "@/shared/types/api.types";
 
-import { MockedUser, users } from "../../users";
+import type { MockedUser} from "../../users";
+import { users } from "../../users";
 
 export const POST = async (req: Request) => {
   const creds = (await req.json()) as { email: string; password: string };
@@ -13,6 +14,7 @@ export const POST = async (req: Request) => {
       statusCode: 403,
       error: "",
     };
+
     return NextResponse.json(error, { status: 403 });
   }
 

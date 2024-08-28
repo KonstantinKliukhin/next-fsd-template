@@ -23,7 +23,7 @@ import {
 import { Input } from "@/shared/ui/input";
 
 import { signInSchema } from "../../model/form-schema";
-import { SignInFormType } from "../../model/types";
+import type { SignInFormType } from "../../model/types";
 
 export const SignInForm: FC = () => {
   const form = useForm<SignInFormType>({

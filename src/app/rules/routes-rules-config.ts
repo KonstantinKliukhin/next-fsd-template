@@ -1,7 +1,7 @@
 import { appRoutes } from "@/shared/config/app-routes";
 
 import { authorizedRule, notAuthorizedRule } from "./rules/auth-rules";
-import { RouteConfig } from "./types";
+import type { RouteConfig } from "./types";
 
 export const routesRulesConfig: RouteConfig[] = [
   // AUTH

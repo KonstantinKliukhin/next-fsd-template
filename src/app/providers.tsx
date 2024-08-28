@@ -1,6 +1,6 @@
 "use client";
 import { SessionProvider } from "next-auth/react";
-import { FC, PropsWithChildren } from "react";
+import type { FC, PropsWithChildren } from "react";
 import { QueryClientProvider } from "react-query";
 
 import { queryClient } from "@/shared/config/query-client";

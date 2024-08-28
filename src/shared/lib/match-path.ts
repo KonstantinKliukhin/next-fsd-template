@@ -18,6 +18,7 @@ export function matchPath(
   );
 
   const match = pathname.match(matcher);
+
   return Boolean(match);
 }
 
@@ -37,6 +38,7 @@ function compilePath(
       .replace(/[\\.*+^${}|()[\]]/g, "\\$&") // Escape special regex chars
       .replace(/\/:([\w-]+)(\?)?/g, (_: string, paramName: string, isOptional) => {
         params.push({ paramName, isOptional: isOptional != null });
+
         return isOptional ? "/?([^\\/]+)?" : "/([^\\/]+)";
       });
 

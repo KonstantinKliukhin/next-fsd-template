@@ -21,7 +21,7 @@ import { Input } from "@/shared/ui/input";
 
 import { useResetPassword } from "../../api/query-hooks";
 import { resetPasswordSchema } from "../../model/form-schema";
-import { ResetPasswordFormType } from "../../model/types";
+import type { ResetPasswordFormType } from "../../model/types";
 
 type ResetPasswordFormProps = {
   code: string;

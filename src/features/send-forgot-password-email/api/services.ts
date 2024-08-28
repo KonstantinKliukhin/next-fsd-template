@@ -1,5 +1,5 @@
 import { apiRoutes } from "@/shared/config/api-routes";
-import { ApiResponse } from "@/shared/types/api.types";
+import type { ApiResponse } from "@/shared/types/api.types";
 
 export async function sendForgotPasswordEmail(email: string): Promise<ApiResponse<void>> {
   const result = await fetch(apiRoutes.requestResetPassword, {

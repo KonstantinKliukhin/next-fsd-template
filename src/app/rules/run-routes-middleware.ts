@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
-import { NextRequestWithAuth } from "next-auth/middleware";
+import type { NextRequestWithAuth } from "next-auth/middleware";
 
 import { matchPath } from "@/shared/lib/match-path";
 
-import { RouteConfig, Rule, RuleProps } from "./types";
+import type { RouteConfig, Rule, RuleProps } from "./types";
 
 export function runRoutesMiddleware(
   req: NextRequestWithAuth,
@@ -38,6 +38,7 @@ function executeRules(
   ruleIndex: number = 0
 ): ReturnType<Rule> | void {
   if (ruleIndex > rules.length - 1) return;
+
   const result = rules[ruleIndex](props);
 
   if (!result) {

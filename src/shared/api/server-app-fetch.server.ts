@@ -34,6 +34,7 @@ export async function serverAppFetch(
       redirect(appRoutes.signIn);
     } else {
       await setAuthCookiesServer(sessionUser.token, sessionUser.refreshToken);
+
       return await fetch(args[0], {
         ...args[1],
         headers: {

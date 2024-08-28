@@ -1,7 +1,8 @@
-import { NextAuthOptions } from "next-auth";
+import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-import { SessionUser, setAuthCookiesServer } from "@/entities/user";
+import type { SessionUser} from "@/entities/user";
+import { setAuthCookiesServer } from "@/entities/user";
 import { logIn } from "@/features/sign-in";
 import { signUp } from "@/features/sign-up";
 
@@ -24,6 +25,7 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(credentials): Promise<SessionUserWithId | null> {
         if (!credentials) throw new Error("Incorrect credentials");
+
         try {
           const res = await signUp(credentials.email, credentials.password);
           if (res && "message" in res) {
@@ -36,6 +38,7 @@ export const authOptions: NextAuthOptions = {
         } catch (e) {
           console.error(e);
           if (e instanceof Error) throw e;
+
           return null;
         }
       },
@@ -49,6 +52,7 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(credentials): Promise<SessionUserWithId | null> {
         if (!credentials) throw new Error("Credentials missed");
+
         try {
           const res = await logIn(credentials);
 
@@ -66,6 +70,7 @@ export const authOptions: NextAuthOptions = {
         } catch (e) {
           console.error(e);
           if (e instanceof Error) throw e;
+
           return null;
         }
       },

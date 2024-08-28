@@ -1,6 +1,6 @@
-import { SessionUser } from "@/entities/user";
+import type { SessionUser } from "@/entities/user";
 import { apiRoutes } from "@/shared/config/api-routes";
-import { ApiResponse } from "@/shared/types/api.types";
+import type { ApiResponse } from "@/shared/types/api.types";
 
 export async function signUp(
   email: string,

@@ -1,7 +1,7 @@
-import { SessionUser } from "@/entities/user";
+import type { SessionUser } from "@/entities/user";
 
 import { apiRoutes } from "../config/api-routes";
-import { ApiResponse } from "../types/api.types";
+import type { ApiResponse } from "../types/api.types";
 
 export async function refreshUserToken(
   refreshToken: string

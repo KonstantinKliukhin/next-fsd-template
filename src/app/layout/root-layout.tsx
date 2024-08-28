@@ -2,7 +2,7 @@ import "../styles/globals.css";
 
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
-import { FC, PropsWithChildren } from "react";
+import type { FC, PropsWithChildren } from "react";
 
 import { cn } from "@/shared/lib/utils";
 import { Toaster } from "@/shared/ui/sonner";

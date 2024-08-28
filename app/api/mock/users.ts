@@ -1,4 +1,4 @@
-import { SessionUser, User } from "@/entities/user";
+import type { SessionUser, User } from "@/entities/user";
 
 export type MockedUser = Omit<SessionUser, "user"> & {
   user: User & {

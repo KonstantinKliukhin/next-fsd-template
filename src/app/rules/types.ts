@@ -1,6 +1,6 @@
-import { NextResponse } from "next/server";
+import type { NextResponse } from "next/server";
 
-import { SessionUser } from "@/entities/user";
+import type { SessionUser } from "@/entities/user";
 
 export type RuleProps = {
   readonly sessionUser?: SessionUser;

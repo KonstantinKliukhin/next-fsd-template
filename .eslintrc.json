@@ -4,7 +4,7 @@
     "prettier",
     "plugin:tailwindcss/recommended"
   ],
-  "plugins": ["tailwindcss", "simple-import-sort",  "unused-imports", "next-fsd"],
+  "plugins": ["tailwindcss", "simple-import-sort",  "unused-imports", "next-fsd", "@typescript-eslint"],
   "rules": {
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
@@ -12,6 +12,12 @@
     "unused-imports/no-unused-imports": "error",
     "next-fsd/path-checker": ["error", { "alias": "@" }],
     "react/no-unescaped-entities": "off",
+    "@typescript-eslint/consistent-type-imports": "error",
+    "padding-line-between-statements": [
+      "error",
+      { "blankLine": "always", "prev": "if", "next": "*" },
+      { "blankLine": "always", "prev": "*", "next": "return" }
+    ],
     "next-fsd/layer-imports": [
       "error",
       {
@@ -44,6 +50,7 @@
       }
     }
   ],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": "latest"

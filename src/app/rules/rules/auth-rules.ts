@@ -1,6 +1,6 @@
 import { appRoutes } from "@/shared/config/app-routes";
 
-import { Rule, RuleProps } from "../types";
+import type { Rule, RuleProps } from "../types";
 
 function getAuthRulesData({ sessionUser }: RuleProps) {
   const isAuthorized = Boolean(sessionUser);

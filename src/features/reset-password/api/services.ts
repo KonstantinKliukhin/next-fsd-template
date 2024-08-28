@@ -1,5 +1,5 @@
 import { apiRoutes } from "@/shared/config/api-routes";
-import { ApiResponse } from "@/shared/types/api.types";
+import type { ApiResponse } from "@/shared/types/api.types";
 
 type ResetPasswordParam = {
   resetPasswordCode: string;

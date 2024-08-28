@@ -22,7 +22,7 @@ import {
 import { Input } from "@/shared/ui/input";
 
 import { signUpSchema } from "../../model/form-schema";
-import { SignUpFormType } from "../../model/types";
+import type { SignUpFormType } from "../../model/types";
 
 export function SignUpForm() {
   const form = useForm<SignUpFormType>({
