@@ -1,11 +1,20 @@
 import { string } from "zod";
 
+import {
+  atLeastOneLowercaseLetterRegExp,
+  atLeastOneNumberRegExp,
+  atLeastOneSpecialCharacterRegExp,
+  atLeastOneUppercaseLetterRegExp,
+  hasSpacesRegExp,
+} from "../constants/reg-exps";
+
 export const passwordSchema = () => {
   return string()
-    .regex(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!?@#$^&*:|]{8,16}$/,
-      "Password must have at least 1 lowercase, 1 uppercase characters and 1 digit"
-    )
-    .min(8, "Password must be at least 7 characters")
-    .max(16, "Password must be maximum of 16 characters");
+    .regex(atLeastOneSpecialCharacterRegExp, "At least one special character required")
+    .regex(atLeastOneLowercaseLetterRegExp, "At least one lowercase letter required")
+    .regex(atLeastOneUppercaseLetterRegExp, "At least one uppercase letter required")
+    .regex(atLeastOneNumberRegExp, "At least one number required")
+    .regex(hasSpacesRegExp, "Password must not contain any spaces")
+    .min(8, "Password must be at least 8 characters")
+    .max(40, "Password must be maximum of 40 characters");
 };
