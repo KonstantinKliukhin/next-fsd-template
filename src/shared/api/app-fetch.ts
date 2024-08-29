@@ -1,6 +1,5 @@
 import { getIsClient } from "../lib/get-is-client";
 import { clientAppFetch } from "./client-app-fetch";
-import { serverAppFetch } from "./server-app-fetch.server";
 
 export async function appFetch(
   ...args: Parameters<typeof fetch>
@@ -10,6 +9,8 @@ export async function appFetch(
   if (isClient) {
     return clientAppFetch(...args);
   } else {
+    const { serverAppFetch } = await import("./server-app-fetch.server");
+
     return serverAppFetch(...args);
   }
 }

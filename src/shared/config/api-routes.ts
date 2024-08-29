@@ -1,13 +1,13 @@
-import { envClient } from "./env-client";
+import { env } from "./env";
 
 export const apiRoutes = {
   // auth
-  refreshToken: `${envClient.API_URL}/mock/auth/refresh-token`,
-  requestResetPassword: `${envClient.API_URL}/mock/auth/request-reset-password`,
-  confirmResetPassword: `${envClient.API_URL}/mock/auth/confirm-reset-password`,
-  signIn: `${envClient.API_URL}/mock/auth/sign-in`,
-  signUp: `${envClient.API_URL}/mock/auth/sign-up`,
+  refreshToken: `${env.NEXT_PUBLIC_APP_API_URL}/mock/auth/refresh-token`,
+  requestResetPassword: `${env.NEXT_PUBLIC_APP_API_URL}/mock/auth/request-reset-password`,
+  confirmResetPassword: `${env.NEXT_PUBLIC_APP_API_URL}/mock/auth/confirm-reset-password`,
+  signIn: `${env.NEXT_PUBLIC_APP_API_URL}/mock/auth/sign-in`,
+  signUp: `${env.NEXT_PUBLIC_APP_API_URL}/mock/auth/sign-up`,
 
   // users
-  me: `${envClient.API_URL}/users/me`,
+  me: `${env.NEXT_PUBLIC_APP_API_URL}/users/me`,
 } as const;

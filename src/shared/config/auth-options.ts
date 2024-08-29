@@ -7,7 +7,7 @@ import { signUp } from "@/features/sign-up";
 
 import { getApiErrorMessage } from "../lib/get-api-error-message";
 import { appRoutes } from "./app-routes";
-import { envServer } from "./env-server";
+import { env } from "./env";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -94,7 +94,7 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
   },
-  secret: envServer.NEXTAUTH_SECRET,
+  secret: env.NEXTAUTH_SECRET,
   session: {
     strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60, // 30 days
