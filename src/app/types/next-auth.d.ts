@@ -6,7 +6,8 @@ declare module "next-auth" {
   }
 
   interface DefaultUser {}
-  interface User extends import("../../entities/user/model/types").SessionUser {}
+  type SessionUser = import("../../entities/user/model/types").SessionUser;
+  interface User extends SessionUser {}
 }
 
 declare module "next-auth/jwt" {

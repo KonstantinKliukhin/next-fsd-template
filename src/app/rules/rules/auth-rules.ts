@@ -4,7 +4,7 @@ import type { Rule, RuleProps } from "../types";
 
 function getAuthRulesData({ sessionUser }: RuleProps) {
   const isAuthorized = Boolean(sessionUser);
-  const isAdmin = sessionUser?.user.role === "admin";
+  const isAdmin = sessionUser?.role === "admin";
 
   return {
     isAuthorized,

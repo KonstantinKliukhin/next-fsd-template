@@ -2,13 +2,15 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { signIn } from "next-auth/react";
+import { getSession, signIn } from "next-auth/react";
 import * as React from "react";
 import { useCallback } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 
+import { saveAuthTokens } from "@/entities/user";
 import { appRoutes } from "@/shared/config/app-routes";
+import { hardNavigate } from "@/shared/lib/hard-navigate";
 import { Button } from "@/shared/ui/button";
 import {
   Form,
@@ -29,7 +31,6 @@ export function SignUpForm() {
     resolver: zodResolver(signUpSchema),
   });
   const { setError } = form;
-  const { push } = useRouter();
 
   const onSubmit = useCallback(
     async (data: SignUpFormType) => {
@@ -39,10 +40,20 @@ export function SignUpForm() {
           message: res?.error || "Unknown error occurred",
         });
       } else {
-        push(appRoutes.dashboard);
+        const session = await getSession();
+
+        if (!session?.user) {
+          toast.error("Try again or contact support");
+
+          return;
+        }
+
+        saveAuthTokens(session.user.accessToken, session?.user?.refreshToken);
+
+        hardNavigate(appRoutes.dashboard);
       }
     },
-    [push, setError]
+    [setError]
   );
 
   return (

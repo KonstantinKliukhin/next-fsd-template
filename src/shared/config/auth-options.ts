@@ -1,18 +1,13 @@
 import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-import type { SessionUser} from "@/entities/user";
-import { setAuthCookiesServer } from "@/entities/user";
 import { logIn } from "@/features/sign-in";
+import type { SignInDto } from "@/features/sign-in/api/types/sign-in.dto";
 import { signUp } from "@/features/sign-up";
 
 import { getApiErrorMessage } from "../lib/get-api-error-message";
 import { appRoutes } from "./app-routes";
 import { envServer } from "./env-server";
-
-type SessionUserWithId = SessionUser & {
-  id: string;
-};
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -23,18 +18,23 @@ export const authOptions: NextAuthOptions = {
         email: {},
         password: {},
       },
-      async authorize(credentials): Promise<SessionUserWithId | null> {
+      async authorize(credentials) {
         if (!credentials) throw new Error("Incorrect credentials");
 
         try {
           const res = await signUp(credentials.email, credentials.password);
+
           if (res && "message" in res) {
             throw new Error(getApiErrorMessage(res));
           }
 
-          await setAuthCookiesServer(res.token, res.refreshToken);
-
-          return { ...res, id: res.user.id };
+          return {
+            id: res.id,
+            email: res.email,
+            accessToken: res.accessToken,
+            refreshToken: res.refreshToken,
+            role: res.role,
+          };
         } catch (e) {
           console.error(e);
           if (e instanceof Error) throw e;
@@ -50,22 +50,22 @@ export const authOptions: NextAuthOptions = {
         email: {},
         password: {},
       },
-      async authorize(credentials): Promise<SessionUserWithId | null> {
+      async authorize(credentials) {
         if (!credentials) throw new Error("Credentials missed");
 
         try {
-          const res = await logIn(credentials);
+          const res = await logIn(credentials as SignInDto);
 
           if (res && "message" in res) {
             throw new Error(getApiErrorMessage(res));
           }
 
-          await setAuthCookiesServer(res.token, res.refreshToken);
-
           return {
-            ...res,
-            id: res.user.id,
-            user: { ...res.user },
+            id: res.id,
+            email: res.email,
+            accessToken: res.accessToken,
+            refreshToken: res.refreshToken,
+            role: res.role,
           };
         } catch (e) {
           console.error(e);
@@ -81,9 +81,9 @@ export const authOptions: NextAuthOptions = {
       const isManualUpdate = trigger === "update" && session;
 
       if (isManualUpdate) {
-        return { ...token, ...session.data.user, user: session.data.user };
+        return { ...token, user: session.data.user };
       } else if (user) {
-        return { ...token, ...user, user: user };
+        return { ...token, user: user };
       } else {
         return token;
       }

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 import type { ApiError } from "@/shared/types/api.types";
 
-import type { MockedUser} from "../../users";
+import type { MockedUser } from "../../users";
 import { users } from "../../users";
 
 export const POST = async (req: Request) => {
@@ -19,8 +19,11 @@ export const POST = async (req: Request) => {
   }
 
   const user: MockedUser = {
-    token: "123",
+    accessToken: "123",
     refreshToken: "321",
+    id: String(Math.random()),
+    role: "user",
+    email: creds.email,
     user: {
       id: String(Math.random()),
       role: "user",

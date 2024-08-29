@@ -1,8 +1,7 @@
 import { signOut } from "next-auth/react";
 
-import { removeAllCookies } from "./remove-all-cookies";
+import { appRoutes } from "@/shared/config/app-routes";
 
 export async function logOut() {
-  await removeAllCookies();
-  await signOut();
+  await signOut({ callbackUrl: appRoutes.signIn });
 }

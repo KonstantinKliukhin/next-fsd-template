@@ -1,5 +1,5 @@
 export { useGetCurrentUser } from "./api/query-hooks";
-export { setAuthCookies } from "./lib/set-auth-cookies";
-export { setAuthCookiesServer } from "./lib/set-auth-cookies.server";
+export { getAuthTokens } from "./lib/get-auth-tokens";
+export { saveAuthTokens } from "./lib/save-auth-tokens";
 export { userRoles } from "./model/constants";
 export type { SessionUser, User } from "./model/types";
