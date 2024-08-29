@@ -7,8 +7,8 @@ export const env = createEnv({
     NEXT_PUBLIC_APP_URL: string().url().min(1, "NEXT_PUBLIC_APP_URL is missed"),
   },
   server: {
-    NEXTAUTH_URL: string().min(1, "NEXTAUTH_URL is missed"),
-    NEXTAUTH_SECRET: string().url().min(1, "NEXTAUTH_SECRET is missed"),
+    NEXTAUTH_URL: string().url().min(1, "NEXTAUTH_URL is missed"),
+    NEXTAUTH_SECRET: string().min(1, "NEXTAUTH_SECRET is missed"),
   },
   experimental__runtimeEnv: {
     NEXT_PUBLIC_APP_API_URL: process.env.NEXT_PUBLIC_APP_API_URL,
