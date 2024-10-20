@@ -135,7 +135,7 @@ class Api {
     const url = toQueryParams(path, options?.params);
 
     const response = await this.fetchFn(url, {
-      method: "POST",
+      method: "DELETE",
       ...restFetchOptions,
       headers: {
         ...restFetchOptions.headers,
