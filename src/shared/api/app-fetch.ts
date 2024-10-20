@@ -1,9 +1,7 @@
 import { getIsClient } from "../lib/get-is-client";
 import { clientAppFetch } from "./client-app-fetch";
 
-export async function appFetch(
-  ...args: Parameters<typeof fetch>
-): Promise<ReturnType<typeof fetch>> {
+export async function appFetch(...args: Parameters<typeof fetch>): Promise<Response> {
   const isClient = getIsClient();
 
   if (isClient) {
