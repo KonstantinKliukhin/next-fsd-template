@@ -6,6 +6,9 @@ type MatchPathOptions = Partial<{
   end: boolean;
 }>;
 
+/**
+ * Matches pattern to pathname. Returns true if pathname matches pattern otherwise - false
+ */
 export function matchPath(
   pattern: string,
   pathname: string,
@@ -36,11 +39,14 @@ function compilePath(
       .replace(/\/*\*?$/, "") // Ignore trailing / and /*, we'll handle it below
       .replace(/^\/*/, "/") // Make sure it has a leading /
       .replace(/[\\.*+^${}|()[\]]/g, "\\$&") // Escape special regex chars
-      .replace(/\/:([\w-]+)(\?)?/g, (_: string, paramName: string, isOptional) => {
-        params.push({ paramName, isOptional: isOptional != null });
+      .replace(
+        /\/:([\w-]+)(\?)?/g,
+        (_: string, paramName: string, isOptional) => {
+          params.push({ paramName, isOptional: isOptional != null });
 
-        return isOptional ? "/?([^\\/]+)?" : "/([^\\/]+)";
-      });
+          return isOptional ? "/?([^\\/]+)?" : "/([^\\/]+)";
+        }
+      );
 
   if (path.endsWith("*")) {
     params.push({ paramName: "*" });

@@ -2,21 +2,41 @@
   "extends": [
     "next/core-web-vitals",
     "prettier",
-    "plugin:tailwindcss/recommended"
+    "plugin:tailwindcss/recommended",
+    "plugin:storybook/recommended"
   ],
-  "plugins": ["tailwindcss", "simple-import-sort",  "unused-imports", "next-fsd", "@typescript-eslint"],
+  "plugins": [
+    "tailwindcss",
+    "simple-import-sort",
+    "unused-imports",
+    "next-fsd",
+    "@typescript-eslint"
+  ],
   "rules": {
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
     "react/display-name": "off",
     "unused-imports/no-unused-imports": "error",
-    "next-fsd/path-checker": ["error", { "alias": "@" }],
+    "next-fsd/path-checker": [
+      "error",
+      {
+        "alias": "@"
+      }
+    ],
     "react/no-unescaped-entities": "off",
     "@typescript-eslint/consistent-type-imports": "error",
     "padding-line-between-statements": [
       "error",
-      { "blankLine": "always", "prev": "if", "next": "*" },
-      { "blankLine": "always", "prev": "*", "next": "return" }
+      {
+        "blankLine": "always",
+        "prev": "if",
+        "next": "*"
+      },
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": "return"
+      }
     ],
     "next-fsd/layer-imports": [
       "error",
@@ -36,13 +56,19 @@
       "error",
       {
         "alias": "@",
-        "ignorePatterns": ["**/src/shared/config/*.(ts|tsx)", "**/src/shared/api/*.(ts|tsx)","**/middleware.ts"]
+        "ignorePatterns": [
+          "**/src/shared/config/*.(ts|tsx)",
+          "**/src/shared/api/*.(ts|tsx)",
+          "**/middleware.ts"
+        ]
       }
     ]
   },
   "overrides": [
     {
-      "files": ["*.d.ts"],
+      "files": [
+        "*.d.ts"
+      ],
       "rules": {
         "unused-imports/no-unused-imports": "off",
         "@typescript-eslint/consistent-type-imports": "off",
