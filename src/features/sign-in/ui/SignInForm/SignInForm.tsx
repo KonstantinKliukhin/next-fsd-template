@@ -12,7 +12,7 @@ import { saveAuthTokens } from "@/entities/user";
 import { appRoutes } from "@/shared/config/app-routes";
 import { hardNavigate } from "@/shared/lib/hard-navigate";
 import { cn } from "@/shared/lib/utils";
-import { Button } from "@/shared/ui/button";
+import { Button } from "@/shared/ui/Button";
 import {
   Form,
   FormControl,
@@ -21,8 +21,8 @@ import {
   FormLabel,
   FormMessage,
   GeneralFormMessage,
-} from "@/shared/ui/form";
-import { Input } from "@/shared/ui/input";
+} from "@/shared/ui/Form";
+import { Input } from "@/shared/ui/Input";
 
 import { signInSchema } from "../../model/form-schema";
 import type { SignInFormType } from "../../model/types";

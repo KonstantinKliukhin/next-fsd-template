@@ -5,7 +5,7 @@ import { Open_Sans } from "next/font/google";
 import type { FC, PropsWithChildren } from "react";
 
 import { cn } from "@/shared/lib/utils";
-import { Toaster } from "@/shared/ui/sonner";
+import { Toaster } from "@/shared/ui/Sonner";
 
 import { AllProviders } from "../providers";
 

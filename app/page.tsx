@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { appRoutes } from "@/shared/config/app-routes";
-import { Button } from "@/shared/ui/button";
+import { Button } from "@/shared/ui/Button";
 
 export default function Home() {
   return (

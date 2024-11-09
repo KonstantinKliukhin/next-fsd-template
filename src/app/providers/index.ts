@@ -1,1 +1,1 @@
-export { AllProviders } from "./all-providers";
+export { AllProviders } from "./AllProviders";
