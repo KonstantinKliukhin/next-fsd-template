@@ -7,7 +7,7 @@ import type { FC, PropsWithChildren } from "react";
 import { cn } from "@/shared/lib/utils";
 import { Toaster } from "@/shared/ui/sonner";
 
-import { Providers } from "../providers";
+import { AllProviders } from "../providers";
 
 const openSans = Open_Sans({
   subsets: ["latin"],
@@ -42,7 +42,7 @@ export const rootMetadata: Metadata = {
 export const RootLayout: FC<PropsWithChildren> = ({ children }) => (
   <html lang="en">
     <body className={cn(openSans.className, "h-full min-h-full")}>
-      <Providers>{children}</Providers>
+      <AllProviders>{children}</AllProviders>
       <Toaster />
     </body>
   </html>

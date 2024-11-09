@@ -8,7 +8,6 @@ export type ApiResponse<T = unknown> = ApiError | T;
 
 export type PaginationParams<T = {}> = {
   page: number;
-  order?: SortOrder;
   take?: number;
 } & T;
 

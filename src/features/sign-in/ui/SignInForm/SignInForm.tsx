@@ -105,7 +105,7 @@ export const SignInForm: FC = () => {
             Sign in
           </Button>
           <GeneralFormMessage />
-          <div className="flex items-center justify-between gap-y-2 max-sm:flex-col">
+          <div className="flex items-center justify-between gap-y-2 max-540:flex-col">
             <Link href={appRoutes.forgotPassword}>
               <Button variant="link">Forgot your password?</Button>
             </Link>

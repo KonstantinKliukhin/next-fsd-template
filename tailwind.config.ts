@@ -8,6 +8,17 @@ module.exports = {
     "./src/**/*.{ts,tsx}",
   ],
   theme: {
+    screens: {
+      "375": "375px",
+      "540": "540px",
+      "768": "768px",
+      "1024": "1024px",
+      "1200": "1200px",
+      "1600": "1600px",
+      "1920": "1920px",
+      "2560": "2560px",
+    },
+
     container: {
       center: true,
       padding: "2rem",
@@ -78,11 +89,6 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
         "accordion-down": {

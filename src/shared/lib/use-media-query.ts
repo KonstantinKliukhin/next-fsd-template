@@ -10,11 +10,14 @@ type UseMediaQueryOptions = {
 };
 
 const sizesMap: Record<string, string> = {
-  sm: "640px",
-  md: "768px",
-  lg: "1024px",
-  xl: "1280px",
-  "2xl": "1536px",
+  "375": "375px",
+  "540": "540px",
+  "768": "768px",
+  "1024": "1024px",
+  "1200": "1200px",
+  "1600": "1600px",
+  "1920": "1920px",
+  "2560": "2560px",
 };
 
 export type BreakpointKey = `${"min" | "max"}-${keyof typeof sizesMap}`;
