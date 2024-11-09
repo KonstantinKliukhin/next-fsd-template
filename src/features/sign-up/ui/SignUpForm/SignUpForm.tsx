@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 import { saveAuthTokens } from "@/entities/user";
-import { appRoutes } from "@/shared/config/app-routes";
+import { APP_ROUTES } from "@/shared/config/app-routes";
 import { hardNavigate } from "@/shared/lib/hard-navigate";
 import { Button } from "@/shared/ui/Button";
 import {
@@ -23,12 +23,12 @@ import {
 } from "@/shared/ui/Form";
 import { Input } from "@/shared/ui/Input";
 
-import { signUpSchema } from "../../model/form-schema";
+import { SIGN_UP_SCHEMA } from "../../model/form-schema";
 import type { SignUpFormType } from "../../model/types";
 
 export function SignUpForm() {
   const form = useForm<SignUpFormType>({
-    resolver: zodResolver(signUpSchema),
+    resolver: zodResolver(SIGN_UP_SCHEMA),
   });
   const { setError } = form;
 
@@ -50,7 +50,7 @@ export function SignUpForm() {
 
         saveAuthTokens(session.user.accessToken, session?.user?.refreshToken);
 
-        hardNavigate(appRoutes.dashboard);
+        hardNavigate(APP_ROUTES.DASHBOARD);
       }
     },
     [setError]
@@ -118,7 +118,7 @@ export function SignUpForm() {
             Continue
           </Button>
           <GeneralFormMessage />
-          <Link href={appRoutes.signIn}>
+          <Link href={APP_ROUTES.SIGN_IN}>
             <Button variant="link" size="sm">
               Already have an account?{" "}
               <span className="pl-0.5 font-medium"> Sign In</span>

@@ -6,7 +6,7 @@ import type { SessionUser } from "@/entities/user";
 import { getAuthTokens, saveAuthTokens } from "@/entities/user";
 import { logOut } from "@/features/log-out";
 
-import { appRoutes } from "../config/app-routes";
+import { APP_ROUTES } from "../config/app-routes";
 import type { ApiResponse } from "../types/api.types";
 import { refreshUserToken } from "./refresh-user-token";
 
@@ -31,7 +31,7 @@ export async function clientAppFetch(
 
   if (isAuthError) {
     if (!tokens?.refreshToken) {
-      signOut({ callbackUrl: appRoutes.signIn });
+      signOut({ callbackUrl: APP_ROUTES.SIGN_IN });
 
       return response;
     }
@@ -46,7 +46,7 @@ export async function clientAppFetch(
     ) {
       await logOut();
       toast.info("Your session has expired. Please sign in again");
-      redirect(appRoutes.signIn);
+      redirect(APP_ROUTES.SIGN_IN);
     } else {
       saveAuthTokens(sessionUser.accessToken, sessionUser.refreshToken);
 

@@ -1,11 +1,11 @@
 import type { SessionUser } from "@/entities/user";
-import { apiRoutes } from "@/shared/config/api-routes";
+import { API_ROUTES } from "@/shared/config/api-routes";
 import type { ApiResponse } from "@/shared/types/api.types";
 
 import type { SignInDto } from "./types/sign-in.dto";
 
 export async function logIn(dto: SignInDto): Promise<ApiResponse<SessionUser>> {
-  const response = await fetch(apiRoutes.signIn, {
+  const response = await fetch(API_ROUTES.SIGN_IN, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

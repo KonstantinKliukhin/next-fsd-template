@@ -15,7 +15,7 @@ const openSans = Open_Sans({
   variable: "--open-sans",
 });
 
-export const rootMetadata: Metadata = {
+export const ROOT_METADATA: Metadata = {
   title: "FSD template",
   description: "Cool FSD template developed by Kostiantyn Kliukhin",
   manifest: "/site.webmanifest",

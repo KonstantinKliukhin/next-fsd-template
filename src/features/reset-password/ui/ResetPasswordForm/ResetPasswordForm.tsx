@@ -5,7 +5,7 @@ import * as React from "react";
 import { memo, useCallback } from "react";
 import { useForm } from "react-hook-form";
 
-import { appRoutes } from "@/shared/config/app-routes";
+import { APP_ROUTES } from "@/shared/config/app-routes";
 import { cn } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui/Button";
 import {
@@ -20,7 +20,7 @@ import {
 import { Input } from "@/shared/ui/Input";
 
 import { useResetPassword } from "../../api/query-hooks";
-import { resetPasswordSchema } from "../../model/form-schema";
+import { RESET_PASSWORD_SCHEMA } from "../../model/form-schema";
 import type { ResetPasswordFormType } from "../../model/types";
 
 type ResetPasswordFormProps = {
@@ -32,7 +32,7 @@ export const ResetPasswordForm = memo<ResetPasswordFormProps>(function ResetPass
 }) {
   const { mutateAsync: resetPassword } = useResetPassword();
   const form = useForm<ResetPasswordFormType>({
-    resolver: zodResolver(resetPasswordSchema),
+    resolver: zodResolver(RESET_PASSWORD_SCHEMA),
   });
   const { setError } = form;
   const { push } = useRouter();
@@ -41,7 +41,7 @@ export const ResetPasswordForm = memo<ResetPasswordFormProps>(function ResetPass
     async (data: ResetPasswordFormType) => {
       try {
         await resetPassword({ ...data, resetPasswordCode: code });
-        push(appRoutes.signIn);
+        push(APP_ROUTES.SIGN_IN);
       } catch (error) {
         if (typeof error === "string") {
           setError("root", { message: error });

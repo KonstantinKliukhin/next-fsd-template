@@ -1,6 +1,6 @@
 import { getSession } from "next-auth/react";
 
-import { localStorageKeys } from "@/shared/config/local-storage-keys";
+import { LOCAL_STORAGE_KEYS } from "@/shared/config/local-storage-keys";
 import { getIsClient } from "@/shared/lib/get-is-client";
 
 export async function getAuthTokens(): Promise<{
@@ -8,8 +8,8 @@ export async function getAuthTokens(): Promise<{
   refreshToken: string | null;
 } | null> {
   if (getIsClient()) {
-    const accessToken = localStorage.getItem(localStorageKeys.accessToken) || null;
-    const refreshToken = localStorage.getItem(localStorageKeys.refreshToken) || null;
+    const accessToken = localStorage.getItem(LOCAL_STORAGE_KEYS.ACCESS_TOKEN) || null;
+    const refreshToken = localStorage.getItem(LOCAL_STORAGE_KEYS.REFRESH_TOKEN) || null;
 
     if (!accessToken && !refreshToken) {
       const session = await getSession();

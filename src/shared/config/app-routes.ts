@@ -1,10 +1,10 @@
-export const appRoutes = {
+export const APP_ROUTES = {
   //AUTH
-  signUp: "/sign-up",
-  signIn: "/sign-in",
-  forgotPassword: "/forgot-password",
-  resetPassword: "/reset-password",
+  SIGN_UP: "/sign-up",
+  SIGN_IN: "/sign-in",
+  FORGOT_PASSWORD: "/forgot-password",
+  RESET_PASSWORD: "/reset-password",
 
   // APP
-  dashboard: "/dashboard",
+  DASHBOARD: "/dashboard",
 } as const;

@@ -1,11 +1,11 @@
 import { withAuth } from "next-auth/middleware";
 
-import { routesRulesConfig, runRoutesMiddleware } from "@/app/rules";
+import { ROUTES_RULES_CONFIG, runRoutesMiddleware } from "@/app/rules";
 import { env } from "@/shared/config/env";
 
 export default withAuth(
   async function middleware(req) {
-    return runRoutesMiddleware(req, routesRulesConfig);
+    return runRoutesMiddleware(req, ROUTES_RULES_CONFIG);
   },
   {
     secret: env.NEXTAUTH_SECRET,

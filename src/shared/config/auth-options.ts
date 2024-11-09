@@ -6,10 +6,10 @@ import type { SignInDto } from "@/features/sign-in/api/types/sign-in.dto";
 import { signUp } from "@/features/sign-up";
 
 import { getApiErrorMessage } from "../lib/get-api-error-message";
-import { appRoutes } from "./app-routes";
+import { APP_ROUTES } from "./app-routes";
 import { env } from "./env";
 
-export const authOptions: NextAuthOptions = {
+export const AUTH_OPTIONS: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: "credentials",
@@ -100,7 +100,7 @@ export const authOptions: NextAuthOptions = {
     maxAge: 30 * 24 * 60 * 60, // 30 days
   },
   pages: {
-    signIn: appRoutes.signIn,
-    newUser: appRoutes.signUp,
+    signIn: APP_ROUTES.SIGN_IN,
+    newUser: APP_ROUTES.SIGN_UP,
   },
 };

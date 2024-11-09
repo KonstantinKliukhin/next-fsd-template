@@ -1,3 +1,3 @@
 import type { UserRoles } from "./types";
 
-export const userRoles: UserRoles[] = ["admin", "user"];
+export const USER_ROLES: UserRoles[] = ["admin", "user"];

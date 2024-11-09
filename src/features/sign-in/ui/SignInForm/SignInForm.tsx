@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 import { saveAuthTokens } from "@/entities/user";
-import { appRoutes } from "@/shared/config/app-routes";
+import { APP_ROUTES } from "@/shared/config/app-routes";
 import { hardNavigate } from "@/shared/lib/hard-navigate";
 import { cn } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui/Button";
@@ -24,12 +24,12 @@ import {
 } from "@/shared/ui/Form";
 import { Input } from "@/shared/ui/Input";
 
-import { signInSchema } from "../../model/form-schema";
+import { SIGN_IN_SCHEMA } from "../../model/form-schema";
 import type { SignInFormType } from "../../model/types";
 
 export const SignInForm: FC = () => {
   const form = useForm<SignInFormType>({
-    resolver: zodResolver(signInSchema),
+    resolver: zodResolver(SIGN_IN_SCHEMA),
   });
   const { setError } = form;
 
@@ -55,7 +55,7 @@ export const SignInForm: FC = () => {
 
         saveAuthTokens(session.user.accessToken, session?.user?.refreshToken);
 
-        hardNavigate(appRoutes.dashboard);
+        hardNavigate(APP_ROUTES.DASHBOARD);
       }
     },
     [setError]
@@ -106,10 +106,10 @@ export const SignInForm: FC = () => {
           </Button>
           <GeneralFormMessage />
           <div className="flex items-center justify-between gap-y-2 max-540:flex-col">
-            <Link href={appRoutes.forgotPassword}>
+            <Link href={APP_ROUTES.FORGOT_PASSWORD}>
               <Button variant="link">Forgot your password?</Button>
             </Link>
-            <Link href={appRoutes.signUp}>
+            <Link href={APP_ROUTES.SIGN_UP}>
               <Button variant="link">Don't have account yet?</Button>
             </Link>
           </div>

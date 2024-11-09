@@ -1,22 +1,22 @@
-import { appRoutes } from "@/shared/config/app-routes";
+import { APP_ROUTES } from "@/shared/config/app-routes";
 
 import { authorizedRule, notAuthorizedRule } from "./rules/auth-rules";
 import type { RouteConfig } from "./types";
 
-export const routesRulesConfig: RouteConfig[] = [
+export const ROUTES_RULES_CONFIG: RouteConfig[] = [
   // AUTH
   {
-    url: appRoutes.signUp,
+    url: APP_ROUTES.SIGN_UP,
     rules: [authorizedRule],
   },
   {
-    url: appRoutes.signIn,
+    url: APP_ROUTES.SIGN_IN,
     rules: [authorizedRule],
   },
 
   // APP
   {
-    url: appRoutes.dashboard,
+    url: APP_ROUTES.DASHBOARD,
     rules: [notAuthorizedRule],
   },
 ];

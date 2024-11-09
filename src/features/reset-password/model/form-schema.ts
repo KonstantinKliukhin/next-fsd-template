@@ -2,7 +2,7 @@ import { object } from "zod";
 
 import { passwordSchema } from "@/shared/lib/validation-schema";
 
-export const resetPasswordSchema = object({
+export const RESET_PASSWORD_SCHEMA = object({
   password: passwordSchema(),
   confirmPassword: passwordSchema(),
 }).refine((data) => data.password === data.confirmPassword, {
