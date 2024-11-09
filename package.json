@@ -2,6 +2,9 @@
   "name": "nextjs-tailwindcss-typescript-starter",
   "version": "0.1.0",
   "private": true,
+  "sideEffects": [
+    "./src/**/*.css"
+  ],
   "scripts": {
     "build": "next build",
     "dev": "next dev --turbo",
