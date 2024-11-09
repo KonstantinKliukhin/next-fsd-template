@@ -3,6 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { getSession, signIn } from "next-auth/react";
+import type { FC } from "react";
 import * as React from "react";
 import { useCallback } from "react";
 import { useForm } from "react-hook-form";
@@ -26,7 +27,7 @@ import { Input } from "@/shared/ui/Input";
 import { SIGN_UP_SCHEMA } from "../../model/form-schema";
 import type { SignUpFormType } from "../../model/types";
 
-export function SignUpForm() {
+export const SignUpForm: FC = () => {
   const form = useForm<SignUpFormType>({
     resolver: zodResolver(SIGN_UP_SCHEMA),
   });
@@ -128,4 +129,4 @@ export function SignUpForm() {
       </Form>
     </div>
   );
-}
+};
