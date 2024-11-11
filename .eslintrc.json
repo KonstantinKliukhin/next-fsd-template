@@ -17,6 +17,10 @@
     "simple-import-sort/exports": "error",
     "react/display-name": "off",
     "unused-imports/no-unused-imports": "error",
+    "id-length": ["error", {
+      "exceptionPatterns": ["E|S", "[x-z]", "_.*"],
+      "min": 2
+    }],
     "next-fsd/path-checker": [
       "error",
       {

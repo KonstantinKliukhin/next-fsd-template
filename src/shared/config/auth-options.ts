@@ -35,9 +35,9 @@ export const AUTH_OPTIONS: NextAuthOptions = {
             refreshToken: res.refreshToken,
             role: res.role,
           };
-        } catch (e) {
-          console.error(e);
-          if (e instanceof Error) throw e;
+        } catch (error) {
+          console.error(error);
+          if (error instanceof Error) throw error;
 
           return null;
         }
@@ -67,9 +67,9 @@ export const AUTH_OPTIONS: NextAuthOptions = {
             refreshToken: res.refreshToken,
             role: res.role,
           };
-        } catch (e) {
-          console.error(e);
-          if (e instanceof Error) throw e;
+        } catch (error) {
+          console.error(error);
+          if (error instanceof Error) throw error;
 
           return null;
         }
