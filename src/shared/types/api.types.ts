@@ -1,11 +1,3 @@
-export type ApiError = {
-  error: string;
-  message: string | string[];
-  statusCode: number;
-};
-
-export type ApiResponse<T = unknown> = ApiError | T;
-
 export type PaginationParams<T = {}> = {
   page: number;
   take?: number;
@@ -22,5 +14,3 @@ export type PageResponse<T> = {
   };
   data: T;
 };
-
-export type PageApiResponse<T> = ApiResponse<PageResponse<T>>;

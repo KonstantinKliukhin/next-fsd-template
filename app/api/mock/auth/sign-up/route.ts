@@ -1,7 +1,5 @@
 import { NextResponse } from "next/server";
 
-import type { ApiError } from "@/shared/types/api.types";
-
 import type { MockedUser } from "../../users";
 import { users } from "../../users";
 
@@ -9,7 +7,7 @@ export const POST = async (req: Request) => {
   const creds = (await req.json()) as { email: string; password: string };
 
   if (users.some((user) => user.user.email === creds.email)) {
-    const error: ApiError = {
+    const error = {
       message: "User already exists",
       statusCode: 403,
       error: "",

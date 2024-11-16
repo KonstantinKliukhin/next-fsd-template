@@ -5,7 +5,6 @@ import { logIn } from "@/features/sign-in";
 import type { SignInDto } from "@/features/sign-in/api/types/sign-in.dto";
 import { signUp } from "@/features/sign-up";
 
-import { getApiErrorMessage } from "../lib/get-api-error-message";
 import { APP_ROUTES } from "./app-routes";
 import { env } from "./env";
 
@@ -23,10 +22,6 @@ export const AUTH_OPTIONS: NextAuthOptions = {
 
         try {
           const res = await signUp(credentials.email, credentials.password);
-
-          if (res && "message" in res) {
-            throw new Error(getApiErrorMessage(res));
-          }
 
           return {
             id: res.id,
@@ -55,10 +50,6 @@ export const AUTH_OPTIONS: NextAuthOptions = {
 
         try {
           const res = await logIn(credentials as SignInDto);
-
-          if (res && "message" in res) {
-            throw new Error(getApiErrorMessage(res));
-          }
 
           return {
             id: res.id,
