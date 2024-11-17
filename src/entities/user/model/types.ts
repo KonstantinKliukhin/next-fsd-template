@@ -4,9 +4,12 @@ export type User = {
   role: UserRoles;
 };
 
-export type SessionUser = User & {
-  refreshToken: string;
-  accessToken: string;
+export type SessionUser = {
+  user: User;
+  tokens: {
+    refreshToken: string;
+    accessToken: string;
+  };
 };
 
 export type UserRoles = "admin" | "user";

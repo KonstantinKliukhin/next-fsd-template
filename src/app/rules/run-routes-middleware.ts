@@ -1,12 +1,15 @@
+import { jwtDecode } from "jwt-decode";
+import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
-import type { NextRequestWithAuth } from "next-auth/middleware";
 
+import type { User } from "@/entities/user";
+import { COOKIES_KEYS } from "@/shared/config/cookies-keys";
 import { matchPath } from "@/shared/lib/match-path";
 
 import type { RouteConfig, Rule, RuleProps } from "./types";
 
 export function runRoutesMiddleware(
-  req: NextRequestWithAuth,
+  req: NextRequest,
   config: RouteConfig[]
 ): NextResponse<any> | void {
   const props = createRuleProps(req);
@@ -18,9 +21,16 @@ export function runRoutesMiddleware(
   return executeRules(currentRouteConfig.rules, props);
 }
 
-function createRuleProps(req: NextRequestWithAuth): RuleProps {
+function createRuleProps(req: NextRequest): RuleProps {
   const nextUrl = req.nextUrl.pathname;
-  const sessionUser = req.nextauth.token?.user;
+  let user: User | null = null;
+
+  const requestCookie = req.cookies.get(COOKIES_KEYS.ACCESS_TOKEN);
+
+  if (requestCookie) {
+    user = jwtDecode<User>(requestCookie?.value);
+  }
+
   const redirect = (path: string) => {
     return NextResponse.redirect(new URL(path, req.url));
   };
@@ -28,7 +38,7 @@ function createRuleProps(req: NextRequestWithAuth): RuleProps {
   return {
     nextUrl,
     redirect,
-    sessionUser,
+    user,
   };
 }
 

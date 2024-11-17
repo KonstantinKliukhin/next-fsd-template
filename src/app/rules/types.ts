@@ -1,9 +1,9 @@
 import type { NextResponse } from "next/server";
 
-import type { SessionUser } from "@/entities/user";
+import type { User } from "@/entities/user";
 
 export type RuleProps = {
-  readonly sessionUser?: SessionUser;
+  readonly user?: User | null;
   readonly nextUrl: string;
   readonly redirect: (path: string) => NextResponse<any>;
 };

@@ -2,9 +2,9 @@ import { APP_ROUTES } from "@/shared/config/app-routes";
 
 import type { Rule, RuleProps } from "../types";
 
-function getAuthRulesData({ sessionUser }: RuleProps) {
-  const isAuthorized = Boolean(sessionUser);
-  const isAdmin = sessionUser?.role === "admin";
+function getAuthRulesData({ user }: RuleProps) {
+  const isAuthorized = Boolean(user);
+  const isAdmin = user?.role === "admin";
 
   return {
     isAuthorized,

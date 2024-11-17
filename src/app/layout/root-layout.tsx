@@ -6,6 +6,7 @@ import type { FC, PropsWithChildren } from "react";
 
 import { cn } from "@/shared/lib/utils";
 import { Toaster } from "@/shared/ui/Sonner";
+import { ApiInterceptors } from "@/widgets/api-interceptors";
 
 import { AllProviders } from "../providers";
 
@@ -42,7 +43,10 @@ export const ROOT_METADATA: Metadata = {
 export const RootLayout: FC<PropsWithChildren> = ({ children }) => (
   <html lang="en">
     <body className={cn(openSans.className, "h-full min-h-full")}>
-      <AllProviders>{children}</AllProviders>
+      <AllProviders>
+        {children}
+        <ApiInterceptors />
+      </AllProviders>
       <Toaster />
     </body>
   </html>
