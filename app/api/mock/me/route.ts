@@ -9,9 +9,6 @@ import { users } from "../users";
 export const GET = (req: Request) => {
   const accessTokenCookie = cookies().get("access-token");
 
-  console.log("accessTokenCookie: ", accessTokenCookie);
-  console.dir(req.headers.get("Cookie"));
-
   if (!accessTokenCookie) return NextResponse.json({}, { status: 401 });
 
   const tokenUser = jwtDecode<User>(accessTokenCookie.value);

@@ -38,9 +38,9 @@ export const ForgotPasswordForm: FC = () => {
         await sendForgotPasswordEmail(data.email);
         push(APP_ROUTES.RESET_PASSWORD);
       } catch (error) {
-        if (typeof error === "string") {
-          setError("root", { message: error });
-        }
+        setError("root", {
+          message: error instanceof Error ? error.message : "Unknown error occurred",
+        });
       }
     },
     [push, sendForgotPasswordEmail, setError]

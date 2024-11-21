@@ -1,15 +1,17 @@
 "use client";
 import { isAxiosError } from "axios";
 import type { FC } from "react";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 import { useSignOut } from "@/features/sign-out";
 import { getApi } from "@/shared/api/api";
+import { getIsClient } from "@/shared/lib/get-is-client";
 
 export const ApiInterceptors: FC = () => {
   const { mutateAsync: signOut } = useSignOut();
+  const responseInterceptorId = useRef<number | null>(null);
 
-  const responseInterceptor = async (error: any) => {
+  const responseErrorInterceptor = async (error: any) => {
     if (!isAxiosError(error)) return Promise.reject(error);
 
     if (error?.response?.status === 401) {
@@ -19,20 +21,30 @@ export const ApiInterceptors: FC = () => {
     }
   };
 
-  useEffect(function setupInterceptors() {
-    let responseInterceptorId: number;
+  const setupInterceptors = async () => {
+    const api = await getApi();
 
-    getApi().then((api) => {
-      responseInterceptorId = api.interceptors.response.use(
-        undefined,
-        responseInterceptor
-      );
-    });
+    responseInterceptorId.current = api.interceptors.response.use(
+      undefined,
+      responseErrorInterceptor
+    );
+  };
+
+  const clearInterceptors = async () => {
+    if (!responseInterceptorId.current) return;
+
+    const api = await getApi();
+
+    api.interceptors.response.eject(responseInterceptorId.current);
+  };
+
+  useEffect(() => {
+    if (!getIsClient()) return;
+
+    setupInterceptors();
 
     return () => {
-      getApi().then((api) => {
-        api.interceptors.response.eject(responseInterceptorId);
-      });
+      clearInterceptors();
     };
     //eslint-disable-next-line
   }, []);
