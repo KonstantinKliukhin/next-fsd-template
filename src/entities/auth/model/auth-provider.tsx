@@ -6,7 +6,7 @@ import { useStore } from "zustand/react";
 
 import { getIsClient } from "@/shared/lib/get-is-client";
 
-import { getAccessToken } from "../lib/get-access-token";
+import { getIsAuthenticated } from "../api/services";
 import type { AuthStore } from "./auth-store";
 import { createAuthStore, initAuthStore } from "./auth-store";
 
@@ -37,10 +37,8 @@ export const AuthStoreProvider: FC<PropsWithChildren> = (props) => {
   useEffect(function setInitialState() {
     if (!getIsClient()) return;
 
-    getAccessToken().then((token) => {
-      const hasTokens = Boolean(token);
-
-      storeRef.current?.getState().setIsAuthenticated(hasTokens);
+    getIsAuthenticated().then((isAuthenticated) => {
+      storeRef.current?.getState().setIsAuthenticated(isAuthenticated);
     });
   }, []);
 

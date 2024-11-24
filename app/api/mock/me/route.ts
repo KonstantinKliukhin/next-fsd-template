@@ -3,11 +3,12 @@ import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 import type { User } from "@/entities/user";
+import { COOKIES_KEYS } from "@/shared/config/cookies-keys";
 
 import { users } from "../users";
 
-export const GET = (req: Request) => {
-  const accessTokenCookie = cookies().get("access-token");
+export const GET = () => {
+  const accessTokenCookie = cookies().get(COOKIES_KEYS.ACCESS_TOKEN);
 
   if (!accessTokenCookie) return NextResponse.json({}, { status: 401 });
 

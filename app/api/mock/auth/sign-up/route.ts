@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 import type { User } from "@/entities/user";
+import { COOKIES_KEYS } from "@/shared/config/cookies-keys";
 
 import type { MockedUser } from "../../users";
 import { users } from "../../users";
@@ -45,11 +46,11 @@ export const POST = async (req: Request) => {
 
   users.push(user);
 
-  cookies().set("access-token", user.tokens.accessToken, {
+  cookies().set(COOKIES_KEYS.ACCESS_TOKEN, user.tokens.accessToken, {
     httpOnly: true,
     secure: true,
   });
-  cookies().set("refresh-token", user.tokens.refreshToken, {
+  cookies().set(COOKIES_KEYS.REFRESH_TOKEN, user.tokens.refreshToken, {
     httpOnly: true,
     secure: true,
   });

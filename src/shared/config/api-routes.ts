@@ -7,6 +7,7 @@ export const API_ROUTES = {
   SIGN_IN: `${env.NEXT_PUBLIC_APP_API_URL}/mock/auth/sign-in`,
   SIGN_UP: `${env.NEXT_PUBLIC_APP_API_URL}/mock/auth/sign-up`,
   SIGN_OUT: `${env.NEXT_PUBLIC_APP_API_URL}/mock/auth/sign-out`,
+  IS_AUTHENTICATED: `${env.NEXT_PUBLIC_APP_API_URL}/mock/auth/is-authenticated`,
 
   // users
   ME: `${env.NEXT_PUBLIC_APP_API_URL}/mock/me`,
