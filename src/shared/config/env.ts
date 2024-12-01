@@ -12,10 +12,6 @@ export const env = createEnv({
       invalid_type_error: `NEXT_PUBLIC_ENVIRONMENT can be only one of: ${Object.values(AppEnvironment)}`,
     }),
   },
-  server: {
-    NEXTAUTH_URL: string().url().min(1, "NEXTAUTH_URL is missed"),
-    NEXTAUTH_SECRET: string().min(1, "NEXTAUTH_SECRET is missed"),
-  },
   experimental__runtimeEnv: {
     NEXT_PUBLIC_APP_API_URL: process.env.NEXT_PUBLIC_APP_API_URL,
     NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
