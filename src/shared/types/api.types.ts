@@ -7,10 +7,9 @@ export type PageResponse<T> = {
   meta: {
     readonly page: number;
     readonly take: number;
-    readonly itemCount: number;
-    readonly pageCount: number;
+    readonly total: number;
     readonly hasPreviousPage: boolean;
     readonly hasNextPage: boolean;
   };
-  data: T;
+  data: T[];
 };

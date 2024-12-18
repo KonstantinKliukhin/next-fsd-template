@@ -11,4 +11,5 @@ export const API_ROUTES = {
 
   // users
   ME: `${env.NEXT_PUBLIC_APP_API_URL}/mock/me`,
+  USERS: `${env.NEXT_PUBLIC_APP_API_URL}/mock/users`,
 } as const;
