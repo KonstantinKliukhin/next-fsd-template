@@ -1,14 +1,12 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
-import { getSession, signIn } from "next-auth/react";
 import type { FC } from "react";
 import * as React from "react";
 import { useCallback } from "react";
 import { useForm } from "react-hook-form";
-import { toast } from "sonner";
 
-import { saveAuthTokens } from "@/entities/user";
+import { useAuth } from "@/entities/auth";
 import { APP_ROUTES } from "@/shared/config/app-routes";
 import { hardNavigate } from "@/shared/lib/hard-navigate";
 import { cn } from "@/shared/lib/utils";
@@ -24,6 +22,7 @@ import {
 } from "@/shared/ui/Form";
 import { Input } from "@/shared/ui/Input";
 
+import { logIn } from "../../api/services";
 import { SIGN_IN_SCHEMA } from "../../model/form-schema";
 import type { SignInFormType } from "../../model/types";
 
@@ -33,32 +32,23 @@ export const SignInForm: FC = () => {
   });
   const { setError } = form;
 
+  const { setIsAuthenticated } = useAuth();
+
   const onSubmit = useCallback(
     async (data: SignInFormType) => {
-      const response = await signIn("sign-in-credentials", {
-        ...data,
-        redirect: false,
-      });
+      try {
+        await logIn(data);
 
-      if (!response?.ok) {
-        setError("root", {
-          message: response?.error ?? "Unknown error occurred",
-        });
-      } else {
-        const session = await getSession();
-
-        if (!session?.user) {
-          toast.error("Try again or contact support");
-
-          return;
-        }
-
-        saveAuthTokens(session.user.accessToken, session?.user?.refreshToken);
+        setIsAuthenticated(true);
 
         hardNavigate(APP_ROUTES.DASHBOARD);
+      } catch (error) {
+        setError("root", {
+          message: error instanceof Error ? error.message : "Unknown error occurred",
+        });
       }
     },
-    [setError]
+    [setError, setIsAuthenticated]
   );
 
   return (

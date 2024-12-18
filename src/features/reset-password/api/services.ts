@@ -5,6 +5,7 @@ type ResetPasswordParam = {
   resetPasswordCode: string;
   password: string;
 };
+
 export async function resetPassword({
   resetPasswordCode,
   password,

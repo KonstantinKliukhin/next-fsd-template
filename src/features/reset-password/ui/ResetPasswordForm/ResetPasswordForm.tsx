@@ -41,11 +41,12 @@ export const ResetPasswordForm = memo<ResetPasswordFormProps>(function ResetPass
     async (data: ResetPasswordFormType) => {
       try {
         await resetPassword({ ...data, resetPasswordCode: code });
+
         push(APP_ROUTES.SIGN_IN);
       } catch (error) {
-        if (typeof error === "string") {
-          setError("root", { message: error });
-        }
+        setError("root", {
+          message: error instanceof Error ? error.message : "Unknown error occurred",
+        });
       }
     },
     [push, setError, resetPassword, code]

@@ -1,4 +1,7 @@
+import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
+
+import { COOKIES_KEYS } from "@/shared/config/cookies-keys";
 
 import { users } from "../../users";
 
@@ -28,6 +31,9 @@ export const POST = async (req: Request) => {
       { status: 403 }
     );
   }
+
+  cookies().set(COOKIES_KEYS.ACCESS_TOKEN, user.tokens.accessToken);
+  cookies().set(COOKIES_KEYS.REFRESH_TOKEN, user.tokens.refreshToken);
 
   return NextResponse.json(user);
 };
