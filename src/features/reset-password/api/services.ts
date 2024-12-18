@@ -12,5 +12,5 @@ export async function resetPassword({
 }: ResetPasswordParam): Promise<void> {
   const api = await getApi();
 
-  return api.post(API_ROUTES.CONFIRM_RESET_PASSWORD, { resetPasswordCode, password });
+  await api.post(API_ROUTES.CONFIRM_RESET_PASSWORD, { resetPasswordCode, password });
 }

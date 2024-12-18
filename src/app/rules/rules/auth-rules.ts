@@ -1,10 +1,11 @@
+import { UserRoles } from "@/entities/user";
 import { APP_ROUTES } from "@/shared/config/app-routes";
 
 import type { Rule, RuleProps } from "../types";
 
 function getAuthRulesData({ user }: RuleProps) {
   const isAuthorized = Boolean(user);
-  const isAdmin = user?.role === "admin";
+  const isAdmin = user?.role === UserRoles.Admin;
 
   return {
     isAuthorized,

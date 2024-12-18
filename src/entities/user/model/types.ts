@@ -1,3 +1,5 @@
+import type { UserRoles } from "./constants";
+
 export type User = {
   email: string;
   id: string;
@@ -11,5 +13,3 @@ export type SessionUser = {
     accessToken: string;
   };
 };
-
-export type UserRoles = "admin" | "user";

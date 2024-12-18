@@ -14,10 +14,10 @@ export function useSignOut() {
     mutationFn: async () => {
       await signOut();
 
+      setIsAuthenticated(false);
+
       queryClient.clear();
       await queryClient.cancelQueries();
-
-      setIsAuthenticated(false);
 
       hardNavigate(APP_ROUTES.SIGN_IN);
     },

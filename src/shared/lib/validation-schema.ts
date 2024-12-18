@@ -1,7 +1,7 @@
 import { string } from "zod";
 
 import {
-  AT_LEAST_OBE_LOWERCASE_LETTER_REG_EXO,
+  AT_LEAST_ONE_LOWERCASE_LETTER_REG_EXO,
   AT_LEAST_ONE_NUMBER_REG_EXP,
   AT_LEAST_ONE_SPECIAL_CHARACTER_REG_EXP,
   AT_LEAST_ONE_UPPERCASE_LETTER_REG_EXP,
@@ -15,7 +15,7 @@ export const passwordSchema = () => {
       "At least one special character required"
     )
     .regex(
-      AT_LEAST_OBE_LOWERCASE_LETTER_REG_EXO,
+      AT_LEAST_ONE_LOWERCASE_LETTER_REG_EXO,
       "At least one lowercase letter required"
     )
     .regex(
