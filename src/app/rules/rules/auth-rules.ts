@@ -1,5 +1,6 @@
-import { UserRoles } from "@/entities/user";
 import { APP_ROUTES } from "@/shared/config/app-routes";
+
+import { UserRoles } from "@/entities/user";
 
 import type { Rule, RuleProps } from "../types";
 

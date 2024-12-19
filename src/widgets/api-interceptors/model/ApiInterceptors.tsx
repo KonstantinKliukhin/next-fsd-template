@@ -3,9 +3,10 @@ import { isAxiosError } from "axios";
 import type { FC } from "react";
 import { useEffect, useRef } from "react";
 
-import { useSignOut } from "@/features/sign-out";
 import { getApi } from "@/shared/api/api";
 import { getIsClient } from "@/shared/lib/utils/get-is-client";
+
+import { useSignOut } from "@/features/sign-out";
 
 export const ApiInterceptors: FC = () => {
   const { mutateAsync: signOut } = useSignOut();

@@ -1,8 +1,9 @@
 "use client";
 import type { FC } from "react";
 
-import { SignOutButton } from "@/features/sign-out";
 import { LogoIcon } from "@/shared/ui/icons/LogoIcon";
+
+import { SignOutButton } from "@/features/sign-out";
 
 export const Header: FC = () => {
   return (

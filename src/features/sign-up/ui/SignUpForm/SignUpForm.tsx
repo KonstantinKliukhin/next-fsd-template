@@ -7,7 +7,6 @@ import * as React from "react";
 import { useCallback } from "react";
 import { useForm } from "react-hook-form";
 
-import { useAuth } from "@/entities/auth";
 import { APP_ROUTES } from "@/shared/config/app-routes";
 import { hardNavigate } from "@/shared/lib/routing/hard-navigate";
 import { Button } from "@/shared/ui/Button";
@@ -21,6 +20,8 @@ import {
   GeneralFormMessage,
 } from "@/shared/ui/Form";
 import { Input } from "@/shared/ui/Input";
+
+import { useAuth } from "@/entities/auth";
 
 import { signUp } from "../../api/services";
 import { SIGN_UP_SCHEMA } from "../../model/form-schema";

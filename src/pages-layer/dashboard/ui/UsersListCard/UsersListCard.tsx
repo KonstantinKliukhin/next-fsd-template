@@ -2,9 +2,10 @@
 import type { FC } from "react";
 import { useMemo } from "react";
 
-import { useGetInfiniteUsers } from "@/entities/user";
 import { flatPages } from "@/shared/lib/api/flat-pages";
 import { Button } from "@/shared/ui/Button";
+
+import { useGetInfiniteUsers } from "@/entities/user";
 
 export const UsersListCard: FC = () => {
   const {

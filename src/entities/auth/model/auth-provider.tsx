@@ -6,9 +6,9 @@ import { useStore } from "zustand/react";
 
 import { getIsClient } from "@/shared/lib/utils/get-is-client";
 
-import { getIsAuthenticated } from "../api/services";
 import type { AuthStore } from "./auth-store";
 import { createAuthStore, initAuthStore } from "./auth-store";
+import { getIsAuthenticated } from "../api/services";
 
 export type AuthStoreApi = ReturnType<typeof createAuthStore>;
 

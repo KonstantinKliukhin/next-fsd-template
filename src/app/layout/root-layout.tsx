@@ -6,6 +6,7 @@ import type { FC, PropsWithChildren } from "react";
 
 import { cn } from "@/shared/lib/ui/cn";
 import { Toaster } from "@/shared/ui/Sonner";
+
 import { ApiInterceptors } from "@/widgets/api-interceptors";
 
 import { AllProviders } from "../providers";

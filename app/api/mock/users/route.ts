@@ -1,9 +1,10 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
+import type { PaginationResponse } from "@/shared/types/api.types";
+
 import type { UserDto } from "@/entities/user";
 import { UserRoles } from "@/entities/user";
-import type { PaginationResponse } from "@/shared/types/api.types";
 
 export const GET = async (request: NextRequest) => {
   const searchParams = request.nextUrl.searchParams;

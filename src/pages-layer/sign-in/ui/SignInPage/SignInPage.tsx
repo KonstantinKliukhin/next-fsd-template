@@ -1,6 +1,7 @@
 import type { FC } from "react";
 
 import { SignInForm } from "@/features/sign-in";
+
 import { AuthLayout } from "@/widgets/auth-layout";
 
 export const SignInPage: FC = () => (

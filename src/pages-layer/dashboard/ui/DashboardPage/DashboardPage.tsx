@@ -1,9 +1,10 @@
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import type { FC } from "react";
 
-import { getInfiniteUsersQueryOptions } from "@/entities/user";
 import { fetchInfiniteQueryServer } from "@/shared/lib/api/fetch-infinite-query.server";
 import { getQueryClient } from "@/shared/lib/api/get-query-client";
+
+import { getInfiniteUsersQueryOptions } from "@/entities/user";
 
 import { UserInfoCard } from "../UserInfoCard/UserInfoCard";
 import { UsersListCard } from "../UsersListCard/UsersListCard";

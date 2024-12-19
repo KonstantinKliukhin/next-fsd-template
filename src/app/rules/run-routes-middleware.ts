@@ -2,11 +2,12 @@ import { jwtDecode } from "jwt-decode";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
-import type { User } from "@/entities/user";
 import { COOKIES_KEYS } from "@/shared/config/cookies-keys";
 
-import { matchPath } from "../../shared/lib/routing/match-path";
+import type { User } from "@/entities/user";
+
 import type { RouteConfig, Rule, RuleProps } from "./types";
+import { matchPath } from "../../shared/lib/routing/match-path";
 
 export function runRoutesMiddleware(
   req: NextRequest,

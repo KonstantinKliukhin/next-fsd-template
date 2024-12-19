@@ -1,7 +1,7 @@
 import type { AxiosInstance } from "axios";
 
-import { getIsClient } from "../lib/utils/get-is-client";
 import { mainApi } from "./main-api-instance";
+import { getIsClient } from "../lib/utils/get-is-client";
 
 type GetApiOptions = {
   auth?: boolean;

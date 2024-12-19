@@ -13,7 +13,51 @@
     "@typescript-eslint"
   ],
   "rules": {
-    "simple-import-sort/imports": "error",
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          ["sibling", "parent"],
+          "index"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "@/shared/**",
+            "group": "internal",
+            "position": "before"
+          },
+          {
+            "pattern": "@/entities/**",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "@/features/**",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "@/widgets/**",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "@/pages-layer/**",
+            "group": "internal",
+            "position": "after"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["builtin", "external"],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "newlines-between": "always"
+      }
+    ],
     "simple-import-sort/exports": "error",
     "react/display-name": "off",
     "unused-imports/no-unused-imports": "error",

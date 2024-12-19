@@ -2,9 +2,10 @@ import sign from "jwt-encode";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
+import { COOKIES_KEYS } from "@/shared/config/cookies-keys";
+
 import type { User } from "@/entities/user";
 import { UserRoles } from "@/entities/user";
-import { COOKIES_KEYS } from "@/shared/config/cookies-keys";
 
 import type { MockedUser } from "../../users";
 import { users } from "../../users";

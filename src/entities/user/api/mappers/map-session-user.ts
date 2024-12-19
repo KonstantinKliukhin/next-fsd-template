@@ -1,6 +1,6 @@
+import { mapUser } from "./map-user";
 import type { SessionUser } from "../../model/types";
 import type { SessionUserDto } from "../dto/session-user.dto";
-import { mapUser } from "./map-user";
 
 export function mapSessionUser(dto: SessionUserDto): SessionUser {
   return {
