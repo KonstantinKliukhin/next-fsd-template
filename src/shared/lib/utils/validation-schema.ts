@@ -6,7 +6,7 @@ import {
   AT_LEAST_ONE_SPECIAL_CHARACTER_REG_EXP,
   AT_LEAST_ONE_UPPERCASE_LETTER_REG_EXP,
   HAS_SPACES_REG_EXP,
-} from "../constants/reg-exps";
+} from "../../constants/reg-exps";
 
 export const getPasswordSchema = () => {
   return z

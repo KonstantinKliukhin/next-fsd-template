@@ -7,7 +7,7 @@ import { useCallback } from "react";
 import { useForm } from "react-hook-form";
 
 import { APP_ROUTES } from "@/shared/config/app-routes";
-import { cn } from "@/shared/lib/utils";
+import { cn } from "@/shared/lib/ui/cn";
 import { Button } from "@/shared/ui/Button";
 import {
   Form,

@@ -1,7 +1,7 @@
 import { getApi } from "@/shared/api/api";
 import { API_ROUTES } from "@/shared/config/api-routes";
-import { getPageResponseSchema } from "@/shared/lib/validation-schema";
-import type { PageResponse, PaginationParams } from "@/shared/types/api.types";
+import { getPageResponseSchema } from "@/shared/lib/utils/validation-schema";
+import type { PaginationParams, PaginationResponse } from "@/shared/types/api.types";
 
 import type { User } from "../model/types";
 import { USER_DTO_SCHEMA } from "./dto/user.dto";
@@ -16,7 +16,9 @@ export async function getCurrentUser(): Promise<User> {
   return mapUser(dto);
 }
 
-export async function getUsers(params: PaginationParams): Promise<PageResponse<User>> {
+export async function getUsers(
+  params: PaginationParams
+): Promise<PaginationResponse<User>> {
   const api = await getApi();
   const response = await api.get(API_ROUTES.USERS, { params });
 

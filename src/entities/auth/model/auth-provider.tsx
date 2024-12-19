@@ -4,7 +4,7 @@ import type { FC, PropsWithChildren } from "react";
 import { createContext, useContext, useEffect, useRef } from "react";
 import { useStore } from "zustand/react";
 
-import { getIsClient } from "@/shared/lib/get-is-client";
+import { getIsClient } from "@/shared/lib/utils/get-is-client";
 
 import { getIsAuthenticated } from "../api/services";
 import type { AuthStore } from "./auth-store";

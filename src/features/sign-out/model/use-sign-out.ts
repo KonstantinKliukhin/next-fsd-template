@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { useAuth } from "@/entities/auth";
 import { APP_ROUTES } from "@/shared/config/app-routes";
-import { hardNavigate } from "@/shared/lib/hard-navigate";
+import { hardNavigate } from "@/shared/lib/routing/hard-navigate";
 
 import { signOut } from "../api/services";
 

@@ -1,6 +1,6 @@
 import { object } from "zod";
 
-import { getPasswordSchema } from "@/shared/lib/validation-schema";
+import { getPasswordSchema } from "@/shared/lib/utils/validation-schema";
 
 export const RESET_PASSWORD_SCHEMA = object({
   password: getPasswordSchema(),

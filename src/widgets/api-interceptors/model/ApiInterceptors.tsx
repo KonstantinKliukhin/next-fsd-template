@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 
 import { useSignOut } from "@/features/sign-out";
 import { getApi } from "@/shared/api/api";
-import { getIsClient } from "@/shared/lib/get-is-client";
+import { getIsClient } from "@/shared/lib/utils/get-is-client";
 
 export const ApiInterceptors: FC = () => {
   const { mutateAsync: signOut } = useSignOut();

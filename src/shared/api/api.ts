@@ -1,6 +1,6 @@
 import type { AxiosInstance } from "axios";
 
-import { getIsClient } from "../lib/get-is-client";
+import { getIsClient } from "../lib/utils/get-is-client";
 import { mainApi } from "./main-api-instance";
 
 type GetApiOptions = {

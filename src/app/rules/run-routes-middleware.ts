@@ -4,8 +4,8 @@ import { NextResponse } from "next/server";
 
 import type { User } from "@/entities/user";
 import { COOKIES_KEYS } from "@/shared/config/cookies-keys";
-import { matchPath } from "@/shared/lib/match-path";
 
+import { matchPath } from "../../shared/lib/routing/match-path";
 import type { RouteConfig, Rule, RuleProps } from "./types";
 
 export function runRoutesMiddleware(

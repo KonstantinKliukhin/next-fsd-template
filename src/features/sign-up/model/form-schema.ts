@@ -1,6 +1,6 @@
 import { object, string } from "zod";
 
-import { getPasswordSchema } from "@/shared/lib/validation-schema";
+import { getPasswordSchema } from "@/shared/lib/utils/validation-schema";
 
 export const SIGN_UP_SCHEMA = object({
   email: string().email().min(1, "Required"),

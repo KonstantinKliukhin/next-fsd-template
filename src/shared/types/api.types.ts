@@ -3,7 +3,7 @@ export type PaginationParams<T = {}> = {
   take?: number;
 } & T;
 
-export type PageResponse<T> = {
+export type PaginationResponse<T> = {
   meta: {
     readonly page: number;
     readonly take: number;

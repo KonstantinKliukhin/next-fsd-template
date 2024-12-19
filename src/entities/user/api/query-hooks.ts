@@ -2,7 +2,7 @@ import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { infiniteQueryOptions } from "@tanstack/react-query";
 
 import { QUERY_KEYS } from "@/shared/api/query-keys";
-import { getNextPageParam } from "@/shared/lib/get-next-page-param";
+import { getNextPageParam } from "@/shared/lib/api/get-next-page-param";
 
 import { getCurrentUser, getUsers } from "./services";
 

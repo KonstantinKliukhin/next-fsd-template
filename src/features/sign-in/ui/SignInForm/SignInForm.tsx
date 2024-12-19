@@ -8,8 +8,8 @@ import { useForm } from "react-hook-form";
 
 import { useAuth } from "@/entities/auth";
 import { APP_ROUTES } from "@/shared/config/app-routes";
-import { hardNavigate } from "@/shared/lib/hard-navigate";
-import { cn } from "@/shared/lib/utils";
+import { hardNavigate } from "@/shared/lib/routing/hard-navigate";
+import { cn } from "@/shared/lib/ui/cn";
 import { Button } from "@/shared/ui/Button";
 import {
   Form,
