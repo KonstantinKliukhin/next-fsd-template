@@ -6,8 +6,8 @@ import { getQueryClient } from "@/shared/lib/api/get-query-client";
 
 import { getInfiniteUsersQueryOptions } from "@/entities/user";
 
-import { UserInfoCard } from "../UserInfoCard/UserInfoCard";
-import { UsersListCard } from "../UsersListCard/UsersListCard";
+import { UserInfoCard } from "./UserInfoCard";
+import { UsersListCard } from "./UsersListCard";
 
 export const DashboardPage: FC = async () => {
   const queryClient = getQueryClient();

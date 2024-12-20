@@ -4,7 +4,7 @@ import { memo, useCallback } from "react";
 
 import { Button } from "@/shared/ui/Button";
 
-import { useSignOut } from "../../model/use-sign-out";
+import { useSignOut } from "../model/use-sign-out";
 
 type LogoutButtonProps = ComponentProps<typeof Button>;
 

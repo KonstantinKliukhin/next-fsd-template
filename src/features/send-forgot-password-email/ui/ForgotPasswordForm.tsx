@@ -1,13 +1,12 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import type { FC } from "react";
 import * as React from "react";
 import { useCallback } from "react";
 import { useForm } from "react-hook-form";
 
 import { APP_ROUTES } from "@/shared/config/app-routes";
-import { hardNavigate } from "@/shared/lib/routing/hard-navigate";
 import { cn } from "@/shared/lib/ui/cn";
 import { Button } from "@/shared/ui/Button";
 import {
@@ -21,35 +20,30 @@ import {
 } from "@/shared/ui/Form";
 import { Input } from "@/shared/ui/Input";
 
-import { useAuth } from "@/entities/auth";
+import { useSendForgotPasswordEmail } from "../api/query-hooks";
+import { FORGOT_PASSWORD_SCHEMA } from "../model/form-schema";
+import type { ForgotPasswordFormType } from "../model/types";
 
-import { logIn } from "../../api/services";
-import { SIGN_IN_SCHEMA } from "../../model/form-schema";
-import type { SignInFormType } from "../../model/types";
-
-export const SignInForm: FC = () => {
-  const form = useForm<SignInFormType>({
-    resolver: zodResolver(SIGN_IN_SCHEMA),
+export const ForgotPasswordForm: FC = () => {
+  const form = useForm<ForgotPasswordFormType>({
+    resolver: zodResolver(FORGOT_PASSWORD_SCHEMA),
   });
   const { setError } = form;
-
-  const { setIsAuthenticated } = useAuth();
+  const { push } = useRouter();
+  const { mutateAsync: sendForgotPasswordEmail } = useSendForgotPasswordEmail();
 
   const onSubmit = useCallback(
-    async (data: SignInFormType) => {
+    async (data: ForgotPasswordFormType) => {
       try {
-        await logIn(data);
-
-        setIsAuthenticated(true);
-
-        hardNavigate(APP_ROUTES.DASHBOARD);
+        await sendForgotPasswordEmail(data.email);
+        push(APP_ROUTES.RESET_PASSWORD);
       } catch (error) {
         setError("root", {
           message: error instanceof Error ? error.message : "Unknown error occurred",
         });
       }
     },
-    [setError, setIsAuthenticated]
+    [push, sendForgotPasswordEmail, setError]
   );
 
   return (
@@ -73,37 +67,11 @@ export const SignInForm: FC = () => {
               </FormItem>
             )}
           />
-          <FormField
-            control={form.control}
-            name="password"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Password</FormLabel>
-                <FormControl>
-                  <Input
-                    type="password"
-                    autoComplete="password"
-                    placeholder="••••••••••"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
 
           <Button className="w-full" type="submit" loading={form.formState.isSubmitting}>
-            Sign in
+            Continue
           </Button>
           <GeneralFormMessage />
-          <div className="flex items-center justify-between gap-y-2 max-540:flex-col">
-            <Link href={APP_ROUTES.FORGOT_PASSWORD}>
-              <Button variant="link">Forgot your password?</Button>
-            </Link>
-            <Link href={APP_ROUTES.SIGN_UP}>
-              <Button variant="link">Don't have account yet?</Button>
-            </Link>
-          </div>
         </form>
       </Form>
     </div>

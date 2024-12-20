@@ -1,5 +1,4 @@
 "use client";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import type { FC } from "react";
@@ -9,6 +8,7 @@ import { useForm } from "react-hook-form";
 
 import { APP_ROUTES } from "@/shared/config/app-routes";
 import { hardNavigate } from "@/shared/lib/routing/hard-navigate";
+import { cn } from "@/shared/lib/ui/cn";
 import { Button } from "@/shared/ui/Button";
 import {
   Form,
@@ -23,22 +23,22 @@ import { Input } from "@/shared/ui/Input";
 
 import { useAuth } from "@/entities/auth";
 
-import { signUp } from "../../api/services";
-import { SIGN_UP_SCHEMA } from "../../model/form-schema";
-import type { SignUpFormType } from "../../model/types";
+import { logIn } from "../api/services";
+import { SIGN_IN_SCHEMA } from "../model/form-schema";
+import type { SignInFormType } from "../model/types";
 
-export const SignUpForm: FC = () => {
-  const form = useForm<SignUpFormType>({
-    resolver: zodResolver(SIGN_UP_SCHEMA),
+export const SignInForm: FC = () => {
+  const form = useForm<SignInFormType>({
+    resolver: zodResolver(SIGN_IN_SCHEMA),
   });
   const { setError } = form;
 
   const { setIsAuthenticated } = useAuth();
 
   const onSubmit = useCallback(
-    async (data: SignUpFormType) => {
+    async (data: SignInFormType) => {
       try {
-        await signUp(data.email, data.password);
+        await logIn(data);
 
         setIsAuthenticated(true);
 
@@ -53,7 +53,7 @@ export const SignUpForm: FC = () => {
   );
 
   return (
-    <div className="grid gap-6">
+    <div className={cn("grid gap-6")}>
       <Form {...form}>
         <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
           <FormField
@@ -81,26 +81,8 @@ export const SignUpForm: FC = () => {
                 <FormLabel>Password</FormLabel>
                 <FormControl>
                   <Input
-                    autoComplete="new-password"
                     type="password"
-                    placeholder="••••••••••"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="confirmPassword"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Confirm password</FormLabel>
-                <FormControl>
-                  <Input
-                    autoComplete="new-password"
-                    type="password"
+                    autoComplete="password"
                     placeholder="••••••••••"
                     {...field}
                   />
@@ -111,15 +93,17 @@ export const SignUpForm: FC = () => {
           />
 
           <Button className="w-full" type="submit" loading={form.formState.isSubmitting}>
-            Continue
+            Sign in
           </Button>
           <GeneralFormMessage />
-          <Link href={APP_ROUTES.SIGN_IN}>
-            <Button variant="link" size="sm">
-              Already have an account?{" "}
-              <span className="pl-0.5 font-medium"> Sign In</span>
-            </Button>
-          </Link>
+          <div className="flex items-center justify-between gap-y-2 max-540:flex-col">
+            <Link href={APP_ROUTES.FORGOT_PASSWORD}>
+              <Button variant="link">Forgot your password?</Button>
+            </Link>
+            <Link href={APP_ROUTES.SIGN_UP}>
+              <Button variant="link">Don't have account yet?</Button>
+            </Link>
+          </div>
         </form>
       </Form>
     </div>
