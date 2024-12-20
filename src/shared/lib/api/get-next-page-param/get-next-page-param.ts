@@ -1,6 +1,6 @@
 import type { GetNextPageParamFunction } from "@tanstack/react-query";
 
-import type { PaginationResponse } from "../../types/api.types";
+import type { PaginationResponse } from "../../../types/api.types";
 
 export const getNextPageParam: GetNextPageParamFunction<
   number,

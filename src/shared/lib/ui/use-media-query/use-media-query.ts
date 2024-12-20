@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 
-import { getIsClient } from "../utils/get-is-client";
+import { getIsClient } from "../../utils/get-is-client";
 
 type UseMediaQueryOptions = {
   defaultValue?: boolean;

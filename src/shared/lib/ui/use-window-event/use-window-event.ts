@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { useLatest } from "../state/use-latest";
+import { useLatest } from "../../state/use-latest";
 
 type GetWindowEvent<Type extends string> = Type extends keyof WindowEventMap
   ? WindowEventMap[Type]
