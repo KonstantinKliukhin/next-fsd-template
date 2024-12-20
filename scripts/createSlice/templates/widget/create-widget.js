@@ -1,13 +1,14 @@
 const fs = require("fs/promises");
-const resolveRoot = require("../../resolveRoot");
+
 const createUi = require("./create-ui");
 const createIndexTemplate = require("./index-template");
+const { resolveRoot } = require("../../utils");
 
 module.exports = async (sliceName) => {
   try {
     await fs.mkdir(resolveRoot("src", "widgets", sliceName));
-  } catch (e) {
-    console.log(`Couldn't find directory for ${sliceName}`);
+  } catch (error) {
+    console.log(`Couldn't find directory for ${sliceName}`, error);
   }
 
   await createUi(sliceName);

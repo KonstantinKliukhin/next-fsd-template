@@ -1,6 +1,4 @@
-const firstCharUpperCase = require("../../firstCharUpperCase");
-const toCamelCase = require("../../to-camel-case");
+const { toPascalCase } = require("../../utils");
 
-module.exports = (slice) => `
-export { ${toCamelCase(firstCharUpperCase(slice))} } from "./ui/${toCamelCase(firstCharUpperCase(slice))}/${toCamelCase(firstCharUpperCase(slice))}";
-`;
+module.exports = (slice) =>
+  `export { ${toPascalCase(slice)}Page } from "./ui/${toPascalCase(slice)}";`;

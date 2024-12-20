@@ -1,6 +1,7 @@
 const fs = require("fs/promises");
-const resolveRoot = require("../../resolveRoot");
+
 const createTypesTemplate = require("./types-template");
+const { resolveRoot } = require("../../utils");
 
 module.exports = async (sliceName) => {
   const resolveModelPath = (...segments) =>
@@ -9,7 +10,7 @@ module.exports = async (sliceName) => {
   try {
     await fs.mkdir(resolveModelPath());
     await fs.writeFile(resolveModelPath("types.ts"), createTypesTemplate(sliceName));
-  } catch (e) {
-    console.log(`Couldn't create model folder for slice ${sliceName}`, e);
+  } catch (error) {
+    console.log(`Couldn't create model folder for slice ${sliceName}`, error);
   }
 };

@@ -1,4 +1,4 @@
-const firstCharUpperCase = require("./firstCharUpperCase");
+const firstCharUpperCase = require("./first-char-upper-case");
 module.exports = (value) => {
   const [firstPart, ...restParts] = value.split("-");
 

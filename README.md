@@ -22,24 +22,24 @@ Use it as few as possible, and it is mostly for entities types
 
 page:
 ```shell
-npm run gen pages home-page
+npm run gen page home-page
 ```
 widget:
 
 ```shell
-npm run gen widgets home-page
+npm run gen widget user-card
 ```
 
 feature (form):
 
 ```shell
-npm run gen features edit-user form
+npm run gen feature-form edit-user
 ```
 
 entity:
 
 ```shell
-npm run gen entities country
+npm run gen entity country
 ```
 
 # Architecture notes:

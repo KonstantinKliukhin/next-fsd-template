@@ -1,10 +1,8 @@
-const firstCharUpperCase = require("../../firstCharUpperCase");
-const toCamelCase = require("../../to-camel-case");
+const { toCamelCase, toPascalCase } = require("../../utils");
 
-module.exports = (slice) => `
-import type { z } from "zod";
+module.exports = (slice) => `import type { z } from "zod";
 
-import { ${toCamelCase(slice)}Schema } from "./form-schema";
+import type { ${toCamelCase(slice)}Schema } from "./form-schema";
 
-export type ${firstCharUpperCase(toCamelCase(slice))}FormType = z.infer<typeof ${toCamelCase(slice)}Schema>;
+export type ${toPascalCase(slice)}FormType = z.infer<typeof ${toCamelCase(slice)}Schema>;
 `;

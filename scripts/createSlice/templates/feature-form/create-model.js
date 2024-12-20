@@ -1,7 +1,8 @@
 const fs = require("fs/promises");
-const resolveRoot = require("../../resolveRoot");
-const createFormTypesTemplate = require("./types-template");
+
 const createFormSchemaTemplate = require("./form-schema-template");
+const createFormTypesTemplate = require("./types-template");
+const { resolveRoot } = require("../../utils");
 
 module.exports = async (sliceName) => {
   const resolveModelPath = (...segments) =>
@@ -14,7 +15,7 @@ module.exports = async (sliceName) => {
       resolveModelPath("form-schema.ts"),
       createFormSchemaTemplate(sliceName)
     );
-  } catch (e) {
-    console.log(`Couldn't create model folder for slice ${sliceName}`, e);
+  } catch (error) {
+    console.log(`Couldn't create model folder for slice ${sliceName}`, error);
   }
 };
