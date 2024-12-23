@@ -2,7 +2,7 @@ import type { UserRoles } from "./constants";
 
 export type User = {
   email: string;
-  id: string;
+  id: Id;
   role: UserRoles;
 };
 

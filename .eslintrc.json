@@ -110,6 +110,13 @@
           "**/middleware.ts"
         ]
       }
+    ],
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "enumMember",
+        "format": ["PascalCase"]
+      }
     ]
   },
   "overrides": [
@@ -128,14 +135,5 @@
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": "latest"
-  },
-  "globals": {
-    "DeepPartial": true,
-    "ValueOf": true,
-    "OptionalRecord": true,
-    "Id": true,
-    "IdObj": true,
-    "Dto": true,
-    "UpdateDto": true
   }
 }

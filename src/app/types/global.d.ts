@@ -12,10 +12,6 @@ type OptionalRecord<R extends keyof any, T> = {
 
 type Id = string;
 
-interface IdObj {
-  id: Id;
-}
-
 type OptionType<T extends string | number = string> = {
   value: T;
   label: string;

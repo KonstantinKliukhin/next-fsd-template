@@ -1,7 +1,7 @@
 import type { InfiniteData } from "@tanstack/react-query";
 
 import { flatPages } from "./flat-pages";
-import type { PaginationResponse } from "../../../types/api.types";
+import type { PaginationResponseDTO } from "../../../types/api.types";
 
 describe("flatPages", () => {
   it("should return an empty array when data is undefined", () => {
@@ -10,7 +10,7 @@ describe("flatPages", () => {
   });
 
   it("should flatten pages and return all items", () => {
-    const mockData: InfiniteData<PaginationResponse<number>> = {
+    const mockData: InfiniteData<PaginationResponseDTO<number>> = {
       pages: [
         {
           meta: {
@@ -41,7 +41,7 @@ describe("flatPages", () => {
   });
 
   it("should handle empty pages", () => {
-    const mockData: InfiniteData<PaginationResponse<string>> = {
+    const mockData: InfiniteData<PaginationResponseDTO<string>> = {
       pages: [
         {
           meta: {
@@ -62,7 +62,7 @@ describe("flatPages", () => {
   });
 
   it("should handle mixed content types", () => {
-    const mockData: InfiniteData<PaginationResponse<string | number>> = {
+    const mockData: InfiniteData<PaginationResponseDTO<string | number>> = {
       pages: [
         {
           meta: {

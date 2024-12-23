@@ -1,9 +1,9 @@
 import { getNextPageParam } from "./get-next-page-param";
-import type { PaginationResponse } from "../../../types/api.types";
+import type { PaginationResponseDTO } from "../../../types/api.types";
 
 describe("getNextPageParam", () => {
   it("should return null when the total number of items is reached", () => {
-    const lastPage: PaginationResponse<any> = {
+    const lastPage: PaginationResponseDTO<any> = {
       data: [4, 5, 6],
       meta: {
         page: 1,
@@ -14,7 +14,7 @@ describe("getNextPageParam", () => {
       },
     };
 
-    const allPages: PaginationResponse<any>[] = [
+    const allPages: PaginationResponseDTO<any>[] = [
       {
         data: [1, 2, 3],
         meta: {
@@ -34,7 +34,7 @@ describe("getNextPageParam", () => {
   });
 
   it("should return the next page number when more items are available", () => {
-    const lastPage: PaginationResponse<any> = {
+    const lastPage: PaginationResponseDTO<any> = {
       data: [1, 2, 3],
       meta: {
         page: 0,
@@ -45,7 +45,7 @@ describe("getNextPageParam", () => {
       },
     };
 
-    const allPages: PaginationResponse<any>[] = [lastPage];
+    const allPages: PaginationResponseDTO<any>[] = [lastPage];
 
     const result = getNextPageParam(lastPage, allPages, 0, [0]);
 
@@ -53,7 +53,7 @@ describe("getNextPageParam", () => {
   });
 
   it("should return null when the last page has fewer items than the 'take' value", () => {
-    const lastPage: PaginationResponse<any> = {
+    const lastPage: PaginationResponseDTO<any> = {
       data: [7, 8],
       meta: {
         page: 2,
@@ -64,7 +64,7 @@ describe("getNextPageParam", () => {
       },
     };
 
-    const allPages: PaginationResponse<any>[] = [
+    const allPages: PaginationResponseDTO<any>[] = [
       {
         data: [1, 2, 3],
         meta: {
@@ -94,7 +94,7 @@ describe("getNextPageParam", () => {
   });
 
   it("should return null when page is 0 and total is exactly equal to 'take'", () => {
-    const lastPage: PaginationResponse<any> = {
+    const lastPage: PaginationResponseDTO<any> = {
       data: [1, 2, 3],
       meta: {
         page: 0,
@@ -105,7 +105,7 @@ describe("getNextPageParam", () => {
       },
     };
 
-    const allPages: PaginationResponse<any>[] = [lastPage];
+    const allPages: PaginationResponseDTO<any>[] = [lastPage];
 
     const result = getNextPageParam(lastPage, allPages, 0, [0]);
 
@@ -113,7 +113,7 @@ describe("getNextPageParam", () => {
   });
 
   it("should correctly calculate next page when 'page' is a large number", () => {
-    const lastPage: PaginationResponse<any> = {
+    const lastPage: PaginationResponseDTO<any> = {
       data: [9991, 9992, 9993, 9994, 9995],
       meta: {
         page: 1998,
@@ -124,7 +124,7 @@ describe("getNextPageParam", () => {
       },
     };
 
-    const allPages: PaginationResponse<any>[] = [lastPage];
+    const allPages: PaginationResponseDTO<any>[] = [lastPage];
 
     const result = getNextPageParam(lastPage, allPages, 1998, [1998]);
 
@@ -132,7 +132,7 @@ describe("getNextPageParam", () => {
   });
 
   it("should return null when 'total' is 0, regardless of other parameters", () => {
-    const lastPage: PaginationResponse<any> = {
+    const lastPage: PaginationResponseDTO<any> = {
       data: [],
       meta: {
         page: 0,
@@ -143,7 +143,7 @@ describe("getNextPageParam", () => {
       },
     };
 
-    const allPages: PaginationResponse<any>[] = [lastPage];
+    const allPages: PaginationResponseDTO<any>[] = [lastPage];
 
     const result = getNextPageParam(lastPage, allPages, 0, [0]);
 
@@ -151,7 +151,7 @@ describe("getNextPageParam", () => {
   });
 
   it("should handle case where 'take' is 1 and there are multiple pages", () => {
-    const lastPage: PaginationResponse<any> = {
+    const lastPage: PaginationResponseDTO<any> = {
       data: [3],
       meta: {
         page: 2,
@@ -162,7 +162,7 @@ describe("getNextPageParam", () => {
       },
     };
 
-    const allPages: PaginationResponse<any>[] = [
+    const allPages: PaginationResponseDTO<any>[] = [
       {
         data: [1],
         meta: {
@@ -192,7 +192,7 @@ describe("getNextPageParam", () => {
   });
 
   it("should return correct next page when 'total' is exactly divisible by 'take'", () => {
-    const lastPage: PaginationResponse<any> = {
+    const lastPage: PaginationResponseDTO<any> = {
       data: [7, 8, 9],
       meta: {
         page: 2,
@@ -203,7 +203,7 @@ describe("getNextPageParam", () => {
       },
     };
 
-    const allPages: PaginationResponse<any>[] = [
+    const allPages: PaginationResponseDTO<any>[] = [
       {
         data: [1, 2, 3],
         meta: {
@@ -233,7 +233,7 @@ describe("getNextPageParam", () => {
   });
 
   it("should return null when 'lastPage.data' is an empty array", () => {
-    const lastPage: PaginationResponse<any> = {
+    const lastPage: PaginationResponseDTO<any> = {
       data: [],
       meta: {
         page: 0,
@@ -244,7 +244,7 @@ describe("getNextPageParam", () => {
       },
     };
 
-    const allPages: PaginationResponse<any>[] = [lastPage];
+    const allPages: PaginationResponseDTO<any>[] = [lastPage];
 
     const result = getNextPageParam(lastPage, allPages, 0, [0]);
 

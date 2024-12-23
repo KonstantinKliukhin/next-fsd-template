@@ -29,32 +29,6 @@ module.exports = {
 
     extend: {
       colors: {
-        error: {
-          dark: "#93140B",
-          base: "#F04438",
-          light: "#FEE4E2",
-          lighter: "#FEF3F2",
-        },
-        warning: {
-          dark: "#995905",
-          base: "#F79009",
-          light: "#FEF0C7",
-          lighter: "#FFFAEB",
-        },
-        success: {
-          dark: "#065636",
-          base: "#12B76A",
-          light: "#D1FADF",
-          lighter: "#ECFDF3",
-        },
-        decorative: {
-          "soft-orange": "#FF9780",
-          yellow: "#FED167",
-          purple: "#8699F9",
-          green: "#00CB97",
-          "mid-blue": "#80AEFF",
-        },
-
         // Colors from the tailwind basic setup & integration with the UI set
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

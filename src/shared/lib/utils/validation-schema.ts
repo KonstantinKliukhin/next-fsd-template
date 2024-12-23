@@ -29,7 +29,9 @@ export const getPasswordSchema = () => {
     .max(40, "Password must be maximum of 40 characters");
 };
 
-export const getPageResponseSchema = <T extends z.ZodObject<any>>(dataSchema: T) => {
+export const getPaginationResponseSchema = <T extends z.ZodObject<any>>(
+  dataSchema: T
+) => {
   return z.object({
     meta: z.object({
       page: z.number(),

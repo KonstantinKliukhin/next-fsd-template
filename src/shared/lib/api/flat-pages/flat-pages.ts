@@ -1,7 +1,9 @@
 import type { InfiniteData } from "@tanstack/react-query";
 
-import type { PaginationResponse } from "../../../types/api.types";
+import type { PaginationResponseDTO } from "../../../types/api.types";
 
-export function flatPages<T>(data: InfiniteData<PaginationResponse<T>> | undefined): T[] {
+export function flatPages<T>(
+  data: InfiniteData<PaginationResponseDTO<T>> | undefined
+): T[] {
   return data?.pages.flatMap((page) => page.data) || [];
 }

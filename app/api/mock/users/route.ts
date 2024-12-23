@@ -1,7 +1,7 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
-import type { PaginationResponse } from "@/shared/types/api.types";
+import type { PaginationResponseDTO } from "@/shared/types/api.types";
 
 import type { UserDto } from "@/entities/user";
 import { UserRoles } from "@/entities/user";
@@ -19,7 +19,7 @@ export const GET = async (request: NextRequest) => {
     role: index % 2 === 0 ? UserRoles.User : UserRoles.Admin,
   }));
 
-  const response: PaginationResponse<UserDto> = {
+  const response: PaginationResponseDTO<UserDto> = {
     data: users,
     meta: {
       hasNextPage: true,
