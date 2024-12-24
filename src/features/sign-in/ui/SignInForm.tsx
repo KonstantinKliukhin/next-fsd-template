@@ -21,7 +21,7 @@ import { Input } from "@/shared/ui/Input";
 
 import { useAuth } from "@/entities/auth";
 
-import { logIn } from "../api/services";
+import { useSignIn } from "../api/query-hooks";
 import { SIGN_IN_SCHEMA } from "../model/form-schema";
 import type { SignInFormType } from "../model/types";
 
@@ -32,11 +32,12 @@ export const SignInForm: FC = () => {
   const { setError } = form;
 
   const { setIsAuthenticated } = useAuth();
+  const { mutateAsync: signIn } = useSignIn();
 
   const onSubmit = useCallback(
     async (data: SignInFormType) => {
       try {
-        await logIn(data);
+        await signIn(data);
 
         setIsAuthenticated(true);
 
@@ -47,7 +48,7 @@ export const SignInForm: FC = () => {
         });
       }
     },
-    [setError, setIsAuthenticated]
+    [setError, setIsAuthenticated, signIn]
   );
 
   return (

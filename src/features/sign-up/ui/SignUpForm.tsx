@@ -21,7 +21,7 @@ import { Input } from "@/shared/ui/Input";
 
 import { useAuth } from "@/entities/auth";
 
-import { signUp } from "../api/services";
+import { useSignUp } from "../api/query-hooks";
 import { SIGN_UP_SCHEMA } from "../model/form-schema";
 import type { SignUpFormType } from "../model/types";
 
@@ -33,10 +33,12 @@ export const SignUpForm: FC = () => {
 
   const { setIsAuthenticated } = useAuth();
 
+  const { mutateAsync: signUp } = useSignUp();
+
   const onSubmit = useCallback(
     async (data: SignUpFormType) => {
       try {
-        await signUp(data.email, data.password);
+        await signUp(data);
 
         setIsAuthenticated(true);
 
@@ -47,7 +49,7 @@ export const SignUpForm: FC = () => {
         });
       }
     },
-    [setError, setIsAuthenticated]
+    [setError, setIsAuthenticated, signUp]
   );
 
   return (

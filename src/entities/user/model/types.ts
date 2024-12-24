@@ -5,11 +5,3 @@ export type User = {
   id: Id;
   role: UserRoles;
 };
-
-export type SessionUser = {
-  user: User;
-  tokens: {
-    refreshToken: string;
-    accessToken: string;
-  };
-};
