@@ -57,5 +57,5 @@ export const POST = async (req: Request) => {
     secure: true,
   });
 
-  return NextResponse.json(user, { status: 201 });
+  return NextResponse.json(user.user, { status: 201 });
 };

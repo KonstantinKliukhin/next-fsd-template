@@ -1,5 +1,5 @@
 import type { ForwardRefRenderFunction, InputHTMLAttributes } from "react";
-import { memo } from "react";
+import { forwardRef } from "react";
 
 import { cn } from "../../lib/ui/cn";
 
@@ -24,4 +24,4 @@ const InputComponent: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   );
 };
 
-export const Input = memo(InputComponent);
+export const Input = forwardRef(InputComponent);
