@@ -1,22 +1,21 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import type { FC } from "react";
 import * as React from "react";
-import { memo, useCallback } from "react";
+import { useCallback } from "react";
 import { useForm } from "react-hook-form";
 
 import { APP_ROUTES } from "@/shared/config/app-routes";
 import { cn } from "@/shared/lib/ui/cn";
 import { Button } from "@/shared/ui/Button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-  GeneralFormMessage,
-} from "@/shared/ui/Form";
+import { Form } from "@/shared/ui/form/Form";
+import { FormControl } from "@/shared/ui/form/FormControl";
+import { FormField } from "@/shared/ui/form/FormField";
+import { FormItem } from "@/shared/ui/form/FormItem";
+import { FormLabel } from "@/shared/ui/form/FormLabel";
+import { FormMessage } from "@/shared/ui/form/FormMessage";
+import { GeneralFormMessage } from "@/shared/ui/form/GeneralFormMessage";
 import { Input } from "@/shared/ui/Input";
 
 import { useResetPassword } from "../api/query-hooks";
@@ -27,9 +26,8 @@ type ResetPasswordFormProps = {
   code: string;
 };
 
-export const ResetPasswordForm = memo<ResetPasswordFormProps>(function ResetPasswordForm({
-  code,
-}) {
+export const ResetPasswordForm: FC<ResetPasswordFormProps> = (props) => {
+  const { code } = props;
   const { mutateAsync: resetPassword } = useResetPassword();
   const form = useForm<ResetPasswordFormType>({
     resolver: zodResolver(RESET_PASSWORD_SCHEMA),
@@ -100,4 +98,4 @@ export const ResetPasswordForm = memo<ResetPasswordFormProps>(function ResetPass
       </Form>
     </div>
   );
-});
+};
