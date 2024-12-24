@@ -1,30 +1,14 @@
 "use client";
 
 import type { FC, PropsWithChildren } from "react";
-import { createContext, useContext, useEffect, useRef } from "react";
-import { useStore } from "zustand/react";
+import { useEffect, useRef } from "react";
 
 import { getIsClient } from "@/shared/lib/utils/get-is-client";
 
-import type { AuthStore } from "./auth-store";
+import type { AuthStoreApi } from "./auth-context";
+import { AuthStoreContext } from "./auth-context";
 import { createAuthStore, initAuthStore } from "./auth-store";
 import { getIsAuthenticated } from "../api/services";
-
-export type AuthStoreApi = ReturnType<typeof createAuthStore>;
-
-const AuthStoreContext = createContext<AuthStoreApi | undefined>(undefined);
-
-export function useAuth<T = AuthStore>(
-  selector: (store: AuthStore) => T = (store) => store as T
-): T {
-  const context = useContext(AuthStoreContext);
-
-  if (!context) {
-    throw new Error(`useAuth must be used within AuthStoreProvider`);
-  }
-
-  return useStore(context, selector);
-}
 
 export const AuthStoreProvider: FC<PropsWithChildren> = (props) => {
   const { children } = props;
