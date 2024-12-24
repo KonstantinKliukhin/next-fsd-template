@@ -13,15 +13,15 @@ export type AuthActions = {
 
 export type AuthStore = AuthState & AuthActions;
 
-const defaultAuthState: AuthState = {
+const DEFAULT_AUTH_STATE: AuthState = {
   isAuthenticated: false,
 };
 
 export function initAuthStore(): AuthState {
-  return defaultAuthState;
+  return DEFAULT_AUTH_STATE;
 }
 
-export function createAuthStore(initialState: AuthState = defaultAuthState) {
+export function createAuthStore(initialState: AuthState = DEFAULT_AUTH_STATE) {
   return createStore<AuthStore>()(
     persist(
       (set) => ({

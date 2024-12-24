@@ -114,7 +114,7 @@
     "@typescript-eslint/naming-convention": [
       "error",
       {
-        "selector": "enumMember",
+        "selector": ["enumMember", "enum", "typeAlias", "typeParameter"],
         "format": ["PascalCase"]
       }
     ]

@@ -3,7 +3,7 @@ import { nativeEnum, string } from "zod";
 
 import { AppEnvironment } from "./app-environment";
 
-export const env = createEnv({
+export const ENV = createEnv({
   client: {
     NEXT_PUBLIC_APP_API_URL: string().url().min(1, "NEXT_PUBLIC_APP_API_URL is missed"),
     NEXT_PUBLIC_APP_URL: string().url().min(1, "NEXT_PUBLIC_APP_URL is missed"),
