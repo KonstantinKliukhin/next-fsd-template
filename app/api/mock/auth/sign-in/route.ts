@@ -32,8 +32,9 @@ export const POST = async (req: Request) => {
     );
   }
 
-  cookies().set(COOKIES_KEYS.ACCESS_TOKEN, user.tokens.accessToken);
-  cookies().set(COOKIES_KEYS.REFRESH_TOKEN, user.tokens.refreshToken);
+  const cookie = await cookies();
+  cookie.set(COOKIES_KEYS.ACCESS_TOKEN, user.tokens.accessToken);
+  cookie.set(COOKIES_KEYS.REFRESH_TOKEN, user.tokens.refreshToken);
 
   return NextResponse.json(user.user);
 };

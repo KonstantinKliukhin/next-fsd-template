@@ -8,8 +8,9 @@ import type { User } from "@/entities/user";
 
 import { users } from "../users";
 
-export const GET = () => {
-  const accessTokenCookie = cookies().get(COOKIES_KEYS.ACCESS_TOKEN);
+export const GET = async () => {
+  const cookie = await cookies();
+  const accessTokenCookie = cookie.get(COOKIES_KEYS.ACCESS_TOKEN);
 
   if (!accessTokenCookie) return NextResponse.json({}, { status: 401 });
 

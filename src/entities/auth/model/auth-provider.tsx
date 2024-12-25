@@ -13,7 +13,7 @@ import { getIsAuthenticated } from "../api/services";
 export const AuthStoreProvider: FC<PropsWithChildren> = (props) => {
   const { children } = props;
 
-  const storeRef = useRef<AuthStoreApi>();
+  const storeRef = useRef<AuthStoreApi>(null);
   if (!storeRef.current) {
     storeRef.current = createAuthStore(initAuthStore());
   }

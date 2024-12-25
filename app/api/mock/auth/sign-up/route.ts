@@ -48,11 +48,13 @@ export const POST = async (req: Request) => {
 
   users.push(user);
 
-  cookies().set(COOKIES_KEYS.ACCESS_TOKEN, user.tokens.accessToken, {
+  const cookie = await cookies();
+
+  cookie.set(COOKIES_KEYS.ACCESS_TOKEN, user.tokens.accessToken, {
     httpOnly: true,
     secure: true,
   });
-  cookies().set(COOKIES_KEYS.REFRESH_TOKEN, user.tokens.refreshToken, {
+  cookie.set(COOKIES_KEYS.REFRESH_TOKEN, user.tokens.refreshToken, {
     httpOnly: true,
     secure: true,
   });
