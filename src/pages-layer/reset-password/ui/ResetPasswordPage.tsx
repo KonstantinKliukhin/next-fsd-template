@@ -8,13 +8,15 @@ import { ResetPasswordForm } from "@/features/reset-password";
 import { AuthLayout } from "@/widgets/auth-layout";
 
 type ResetPasswordPageProps = {
-  searchParams: {
+  searchParams: Promise<{
     code?: string;
-  };
+  }>;
 };
 
-export const ResetPasswordPage: FC<ResetPasswordPageProps> = (props) => {
-  const code = props.searchParams?.code;
+export const ResetPasswordPage: FC<ResetPasswordPageProps> = async (props) => {
+  const searchParams = await props.searchParams;
+  const code = searchParams?.code;
+
   if (!code) redirect(APP_ROUTES.SIGN_IN);
 
   return (
