@@ -8,7 +8,7 @@ import { useCallback } from "react";
 import { useForm } from "react-hook-form";
 
 import { APP_ROUTES } from "@/shared/config/app-routes";
-import { hardNavigate } from "@/shared/lib/routing/hard-navigate";
+import { useAuthNavigate } from "@/shared/lib/routing/use-auth-navigate";
 import { Button } from "@/shared/ui/Button";
 import { Form } from "@/shared/ui/form/Form";
 import { FormControl } from "@/shared/ui/form/FormControl";
@@ -26,6 +26,8 @@ import { SIGN_UP_SCHEMA } from "../model/form-schema";
 import type { SignUpFormType } from "../model/types";
 
 export const SignUpForm: FC = () => {
+  const push = useAuthNavigate();
+
   const form = useForm<SignUpFormType>({
     resolver: zodResolver(SIGN_UP_SCHEMA),
   });
@@ -42,14 +44,14 @@ export const SignUpForm: FC = () => {
 
         setIsAuthenticated(true);
 
-        hardNavigate(APP_ROUTES.DASHBOARD);
+        push(`${APP_ROUTES.DASHBOARD}?signUp=true`);
       } catch (error) {
         setError("root", {
           message: error instanceof Error ? error.message : "Unknown error occurred",
         });
       }
     },
-    [setError, setIsAuthenticated, signUp]
+    [push, setError, setIsAuthenticated, signUp]
   );
 
   return (

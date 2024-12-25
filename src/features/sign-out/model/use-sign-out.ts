@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { APP_ROUTES } from "@/shared/config/app-routes";
-import { hardNavigate } from "@/shared/lib/routing/hard-navigate";
+import { useAuthNavigate } from "@/shared/lib/routing/use-auth-navigate";
 
 import { useAuth } from "@/entities/auth";
 
@@ -10,6 +10,7 @@ import { signOut } from "../api/services";
 export function useSignOut() {
   const queryClient = useQueryClient();
   const { setIsAuthenticated } = useAuth();
+  const push = useAuthNavigate();
 
   return useMutation({
     mutationFn: async () => {
@@ -20,7 +21,7 @@ export function useSignOut() {
       queryClient.clear();
       await queryClient.cancelQueries();
 
-      hardNavigate(APP_ROUTES.SIGN_IN);
+      push(APP_ROUTES.SIGN_IN);
     },
   });
 }

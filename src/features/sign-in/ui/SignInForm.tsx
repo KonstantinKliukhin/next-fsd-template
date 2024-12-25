@@ -7,7 +7,7 @@ import { useCallback } from "react";
 import { useForm } from "react-hook-form";
 
 import { APP_ROUTES } from "@/shared/config/app-routes";
-import { hardNavigate } from "@/shared/lib/routing/hard-navigate";
+import { useAuthNavigate } from "@/shared/lib/routing/use-auth-navigate";
 import { cn } from "@/shared/lib/ui/cn";
 import { Button } from "@/shared/ui/Button";
 import { Form } from "@/shared/ui/form/Form";
@@ -26,6 +26,8 @@ import { SIGN_IN_SCHEMA } from "../model/form-schema";
 import type { SignInFormType } from "../model/types";
 
 export const SignInForm: FC = () => {
+  const push = useAuthNavigate();
+
   const form = useForm<SignInFormType>({
     resolver: zodResolver(SIGN_IN_SCHEMA),
   });
@@ -41,14 +43,14 @@ export const SignInForm: FC = () => {
 
         setIsAuthenticated(true);
 
-        hardNavigate(APP_ROUTES.DASHBOARD);
+        push(`${APP_ROUTES.DASHBOARD}?signIn=true`);
       } catch (error) {
         setError("root", {
           message: error instanceof Error ? error.message : "Unknown error occurred",
         });
       }
     },
-    [setError, setIsAuthenticated, signIn]
+    [push, setError, setIsAuthenticated, signIn]
   );
 
   return (
