@@ -1071,9 +1071,9 @@ export const AuthStoreProvider: FC<PropsWithChildren> = (props) => {
 }
 ```
 
-4. There are 3 ways of writing component depending on your case.
+4. There are 2 ways of writing component depending on your case.
 
-1\. Common functional component
+1. Common functional component
 
 ```typescript jsx
 type AuthLayoutProps = {
@@ -1091,34 +1091,7 @@ export const AuthLayout: FC<AuthLayoutProps> = (props) => {
 };
 ```
 
-2\. Functional component with ref:
-
-```typescript jsx
-type LabelProps = ComponentPropsWithoutRef<typeof LabelPrimitive.Root>;
-
-const labelVariants = cva(
-  "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-);
-
-const LabelComponent: ForwardRefRenderFunction<
-  ElementRef<typeof LabelPrimitive.Root>,
-  LabelProps
-> = (props, ref) => {
-  const { className, ...restProps } = props;
-
-  return (
-    <LabelPrimitive.Root
-      ref={ref}
-      className={cn(labelVariants(), className)}
-      {...restProps}
-    />
-  );
-};
-
-export const Label = forwardRef(LabelComponent);
-```
-
-3\. Generic functional component
+2. Generic functional component
 
 ```typescript jsx jsx
 export const FormField = <

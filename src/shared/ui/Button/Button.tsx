@@ -1,13 +1,12 @@
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
-import type { ButtonHTMLAttributes, ForwardRefRenderFunction } from "react";
+import type { ComponentProps, FC } from "react";
 import * as React from "react";
-import { forwardRef } from "react";
 
 import { cn } from "../../lib/ui/cn";
 import { SpinnerIcon } from "../icons/SpinnerIcon";
 
-type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
+type ButtonProps = ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean;
     loading?: boolean;
@@ -42,10 +41,7 @@ export const buttonVariants = cva(
   }
 );
 
-const ButtonComponent: ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> = (
-  props,
-  ref
-) => {
+export const Button: FC<ButtonProps> = (props) => {
   const {
     className,
     variant,
@@ -61,7 +57,6 @@ const ButtonComponent: ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> 
   return (
     <Comp
       className={cn(buttonVariants({ variant, size, className }))}
-      ref={ref}
       disabled={loading || disabled}
       {...restProps}
     >
@@ -70,5 +65,3 @@ const ButtonComponent: ForwardRefRenderFunction<HTMLButtonElement, ButtonProps> 
     </Comp>
   );
 };
-
-export const Button = forwardRef(ButtonComponent);

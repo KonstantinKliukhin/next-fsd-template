@@ -1,25 +1,16 @@
 "use client";
 import { Slot } from "@radix-ui/react-slot";
-import type {
-  ComponentPropsWithoutRef,
-  ElementRef,
-  ForwardRefRenderFunction,
-} from "react";
-import { forwardRef } from "react";
+import type { ComponentProps, FC } from "react";
 
 import { useFormField } from "./use-form-field";
 
-type FormControlProps = ComponentPropsWithoutRef<typeof Slot>;
+type FormControlProps = ComponentProps<typeof Slot>;
 
-const FormControlComponent: ForwardRefRenderFunction<
-  ElementRef<typeof Slot>,
-  FormControlProps
-> = (props, ref) => {
+export const FormControl: FC<FormControlProps> = (props) => {
   const { error, formItemId, formDescriptionId, formMessageId } = useFormField();
 
   return (
     <Slot
-      ref={ref}
       id={formItemId}
       aria-describedby={
         !error ? `${formDescriptionId}` : `${formDescriptionId} ${formMessageId}`
@@ -29,5 +20,3 @@ const FormControlComponent: ForwardRefRenderFunction<
     />
   );
 };
-
-export const FormControl = forwardRef(FormControlComponent);
