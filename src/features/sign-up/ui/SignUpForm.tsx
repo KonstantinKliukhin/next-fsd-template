@@ -44,7 +44,7 @@ export const SignUpForm: FC = () => {
 
         setIsAuthenticated(true);
 
-        push(`${APP_ROUTES.DASHBOARD}?signUp=true`);
+        push(APP_ROUTES.DASHBOARD);
       } catch (error) {
         setError("root", {
           message: error instanceof Error ? error.message : "Unknown error occurred",
