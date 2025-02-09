@@ -1,12 +1,7 @@
+import type { UserRoles } from "./constants";
+
 export type User = {
   email: string;
-  id: string;
+  id: Id;
   role: UserRoles;
 };
-
-export type SessionUser = User & {
-  refreshToken: string;
-  accessToken: string;
-};
-
-export type UserRoles = "admin" | "user";

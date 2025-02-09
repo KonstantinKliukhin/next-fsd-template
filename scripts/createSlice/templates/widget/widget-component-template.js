@@ -1,14 +1,12 @@
-const firstCharUpperCase = require("../../firstCharUpperCase");
-const toCamelCase = require("../../to-camel-case");
+const { toPascalCase } = require("../../utils");
 
-module.exports = (slice) => `
-import { memo } from "react"
+module.exports = (slice) => `import type { FC } from "react";
 
-type ${firstCharUpperCase(toCamelCase(slice))}Props = {
-
+type ${toPascalCase(slice)}Props = {
+  
 }
 
-export const ${firstCharUpperCase(toCamelCase(slice))} = memo<${firstCharUpperCase(toCamelCase(slice))}Props>(function ${firstCharUpperCase(toCamelCase(slice))}(props) {
+export const ${toPascalCase(slice)}: FC = (props) => {
   const {} = props;
 
   return (
@@ -16,5 +14,5 @@ export const ${firstCharUpperCase(toCamelCase(slice))} = memo<${firstCharUpperCa
       
     </div>
   )
-})
+}
 `;

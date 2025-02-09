@@ -1,23 +1,16 @@
-import { apiRoutes } from "@/shared/config/api-routes";
-import type { ApiResponse } from "@/shared/types/api.types";
+import { getApi } from "@/shared/api/api";
+import { API_ROUTES } from "@/shared/config/api-routes";
 
 type ResetPasswordParam = {
   resetPasswordCode: string;
   password: string;
 };
+
 export async function resetPassword({
   resetPasswordCode,
   password,
-}: ResetPasswordParam): Promise<ApiResponse<void>> {
-  const response = await fetch(apiRoutes.confirmResetPassword, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ resetPasswordCode, password }),
-  });
+}: ResetPasswordParam): Promise<void> {
+  const api = await getApi();
 
-  if (!response.ok) {
-    return (await response.json()) as ApiResponse<void>;
-  }
+  await api.post(API_ROUTES.CONFIRM_RESET_PASSWORD, { resetPasswordCode, password });
 }

@@ -8,6 +8,17 @@ module.exports = {
     "./src/**/*.{ts,tsx}",
   ],
   theme: {
+    screens: {
+      "375": "375px",
+      "540": "540px",
+      "768": "768px",
+      "1024": "1024px",
+      "1200": "1200px",
+      "1600": "1600px",
+      "1920": "1920px",
+      "2560": "2560px",
+    },
+
     container: {
       center: true,
       padding: "2rem",
@@ -18,32 +29,6 @@ module.exports = {
 
     extend: {
       colors: {
-        error: {
-          dark: "#93140B",
-          base: "#F04438",
-          light: "#FEE4E2",
-          lighter: "#FEF3F2",
-        },
-        warning: {
-          dark: "#995905",
-          base: "#F79009",
-          light: "#FEF0C7",
-          lighter: "#FFFAEB",
-        },
-        success: {
-          dark: "#065636",
-          base: "#12B76A",
-          light: "#D1FADF",
-          lighter: "#ECFDF3",
-        },
-        decorative: {
-          "soft-orange": "#FF9780",
-          yellow: "#FED167",
-          purple: "#8699F9",
-          green: "#00CB97",
-          "mid-blue": "#80AEFF",
-        },
-
         // Colors from the tailwind basic setup & integration with the UI set
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -55,6 +40,10 @@ module.exports = {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
           active: "hsl(var(--primary-active))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
@@ -78,11 +67,6 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
         "accordion-down": {

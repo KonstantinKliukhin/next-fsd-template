@@ -1,19 +1,10 @@
-import { withAuth } from "next-auth/middleware";
+import type { NextRequest } from "next/server";
 
-import { routesRulesConfig, runRoutesMiddleware } from "@/app/rules";
-import { env } from "@/shared/config/env";
+import { ROUTES_RULES_CONFIG, runRoutesMiddleware } from "@/app/rules";
 
-export default withAuth(
-  async function middleware(req) {
-    return runRoutesMiddleware(req, routesRulesConfig);
-  },
-  {
-    secret: env.NEXTAUTH_SECRET,
-    callbacks: {
-      authorized: () => true,
-    },
-  }
-);
+export default async function middleware(req: NextRequest) {
+  return runRoutesMiddleware(req, ROUTES_RULES_CONFIG);
+}
 
 export const config = {
   matcher: ["/sign-up", "/sign-in", "/dashboard"],

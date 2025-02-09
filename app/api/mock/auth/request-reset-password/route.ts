@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { users } from "../../users";
 
 export const POST = async (req: Request) => {
-  const creds = (await req.json()) as { email: string; password: string };
+  const creds = (await req.json()) as { email: string };
 
   const user = users.find(({ user: { email } }) => email === creds.email);
 

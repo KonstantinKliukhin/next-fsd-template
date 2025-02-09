@@ -1,8 +1,7 @@
 const fs = require("fs/promises");
-const resolveRoot = require("../../resolveRoot");
+
 const createFormUITemplate = require("./form-ui-template");
-const firstCharUpperCase = require("../../firstCharUpperCase");
-const toCamelCase = require("../../to-camel-case");
+const { toPascalCase, resolveRoot } = require("../../utils");
 
 module.exports = async (sliceName) => {
   const resolveUIPath = (...segments) =>
@@ -10,13 +9,12 @@ module.exports = async (sliceName) => {
 
   try {
     await fs.mkdir(resolveUIPath());
-    const componentName = `${firstCharUpperCase(toCamelCase(sliceName))}Form`;
-    await fs.mkdir(resolveUIPath(componentName));
+    const componentName = `${toPascalCase(sliceName)}Form`;
     await fs.writeFile(
-      resolveUIPath(componentName, `${componentName}.tsx`),
+      resolveUIPath(`${componentName}.tsx`),
       createFormUITemplate(sliceName, componentName)
     );
-  } catch (e) {
-    console.log(`Couldn't create UI folder for slice ${sliceName}`, e);
+  } catch (error) {
+    console.log(`Couldn't create UI folder for slice ${sliceName}`, error);
   }
 };

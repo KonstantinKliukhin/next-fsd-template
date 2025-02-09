@@ -1,10 +1,12 @@
-import { appRoutes } from "@/shared/config/app-routes";
+import { APP_ROUTES } from "@/shared/config/app-routes";
+
+import { UserRoles } from "@/entities/user";
 
 import type { Rule, RuleProps } from "../types";
 
-function getAuthRulesData({ sessionUser }: RuleProps) {
-  const isAuthorized = Boolean(sessionUser);
-  const isAdmin = sessionUser?.role === "admin";
+function getAuthRulesData({ user }: RuleProps) {
+  const isAuthorized = Boolean(user);
+  const isAdmin = user?.role === UserRoles.Admin;
 
   return {
     isAuthorized,
@@ -17,7 +19,7 @@ export const notAuthorizedRule: Rule = (props) => {
 
   // if not authorized and trying to go further redirect to sign in
   if (!isAuthorized) {
-    return props.redirect(appRoutes.signIn);
+    return props.redirect(APP_ROUTES.SIGN_IN);
   }
 };
 
@@ -26,6 +28,6 @@ export const authorizedRule: Rule = (props) => {
 
   // if authorized and trying to go auth route - redirect to the app
   if (isAuthorized) {
-    return props.redirect(appRoutes.dashboard);
+    return props.redirect(APP_ROUTES.DASHBOARD);
   }
 };

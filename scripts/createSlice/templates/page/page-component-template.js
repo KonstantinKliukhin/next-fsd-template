@@ -1,10 +1,8 @@
-const firstCharUpperCase = require("../../firstCharUpperCase");
-const toCamelCase = require("../../to-camel-case");
+const { toPascalCase } = require("../../utils");
 
-module.exports = (slice) => `
-import type { FC } from "react";
+module.exports = (slice) => `import type { FC } from "react";
 
-export const ${firstCharUpperCase(toCamelCase(slice))}: FC = () => {
+export const ${toPascalCase(slice)}Page: FC = () => {
 
   return <div></div>
 }

@@ -1,4 +1,3 @@
-export const localStorageKeys = {
-  accessToken: "access-token",
-  refreshToken: "refresh-token",
+export const LOCAL_STORAGE_KEYS = {
+  AUTH_STORAGE: "auth-storage",
 } satisfies Record<string, string>;

@@ -1,1 +1,1 @@
-export { AppLayout } from "./ui/AppLayout/AppLayout";
+export { AppLayout } from "./ui/AppLayout";

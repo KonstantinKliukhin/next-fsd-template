@@ -1,8 +1,8 @@
 import { object, string } from "zod";
 
-import { passwordSchema } from "@/shared/lib/validation-schema";
+import { getPasswordSchema } from "@/shared/lib/utils/validation-schema";
 
-export const signInSchema = object({
+export const SIGN_IN_SCHEMA = object({
   email: string().email().min(1, "Required"),
-  password: passwordSchema(),
+  password: getPasswordSchema(),
 });
